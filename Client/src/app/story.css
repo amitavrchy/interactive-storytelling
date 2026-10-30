@@ -1,4 +1,700 @@
-.header-story{position:absolute;top:0;left:0;right:0;background:linear-gradient(#05070fe0,transparent);border:0}.header-story .desktop-nav,.header-story .header-cta{display:none}.header-story .brand{opacity:.8}.story-loading{display:grid;place-items:center;min-height:100svh;color:var(--lamp)}.story-reader{position:relative;isolation:isolate}.chapter-stage{position:relative;height:100svh;min-height:650px;width:100%;overflow:hidden;background:#0c1622;isolation:isolate}.chapter-scroll{position:relative}.story-background{position:absolute;inset:-4%;background:url('/images/north-point.webp') 65% center/cover no-repeat;filter:brightness(.5) saturate(.5);z-index:-3}.story-vignette{position:absolute;inset:0;background:linear-gradient(#05070f90,#05070f40 40%,#05070fe8),linear-gradient(90deg,#05070f80,transparent);z-index:-2}.scene-storm .story-background{filter:brightness(.26) saturate(.6) hue-rotate(10deg);transform:scale(1.06)}.scene-lighthouse .story-background{filter:brightness(.45) sepia(.2);background-position:85% center}.scene-choice .story-background{filter:brightness(.3) sepia(.25)}.scene-dawn .story-background,.scene-epilogue .story-background{filter:brightness(.65) sepia(.35);background-position:center}.atmosphere{position:absolute;inset:0;z-index:-1;pointer-events:none}.chapter-meta{position:absolute;top:135px;left:10%;right:7%;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#a8b4bf}.chapter-meta .eyebrow{font-size:9px}.chapter-clock{font-family:var(--font-display);font-size:1.3rem;color:var(--lamp)}.chapter-title-card{position:absolute;left:17%;right:15%;top:50%;transform:translateY(-50%);text-align:center}.chapter-title-card>.eyebrow{color:var(--lamp);font-size:10px}.chapter-title-card>.eyebrow span{padding:0 12px;color:var(--muted)}.chapter-title-card h1{font-size:clamp(3.5rem,6.5vw,7rem);line-height:1.02;max-width:900px;margin:25px auto;outline:none!important}.chapter-subtitle{font-size:var(--text-base);color:#bdc6ce;max-width:500px;margin:0 auto}.chapter-ornament{display:flex;align-items:center;justify-content:center;gap:17px;color:var(--lamp);margin-top:35px}.chapter-ornament>span{width:35px;height:1px;background:#a08a5850}.chapter-instruction{font-size:8px;letter-spacing:.25em;color:#b5c2cb;margin-top:35px}.narrative-panel{position:absolute;left:23%;right:20%;top:50%;transform:translateY(-50%);opacity:0;visibility:hidden;max-width:800px;margin:auto}.narrative-panel>p{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,3rem);line-height:1.45;letter-spacing:-.01em}.passage-number{display:block;font-size:9px;letter-spacing:.2em;color:var(--lamp);margin-bottom:30px}.narrative-quote{text-align:center}.narrative-quote blockquote{font-size:clamp(2rem,3.6vw,3.8rem);line-height:1.2;margin:0}.narrative-quote .star-mark{font-size:25px;margin-bottom:25px}.caption-track{position:absolute;bottom:110px;left:20%;right:20%;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;font-size:11px;color:#b4c1cc;background:#05070f80;padding:9px 14px;width:fit-content;margin:auto;max-width:70%}.caption-icon{color:var(--lamp)}.progress-rail{position:fixed;left:3.7%;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:20px}.progress-rail button{position:relative;border:0;background:transparent;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:.1em;color:#82939e;padding:8px 4px;min-height:30px}.progress-rail button i{height:5px;width:5px;background:#566779;border-radius:50%}.progress-rail button.active{color:var(--lamp)}.progress-rail button.active i{background:var(--lamp);box-shadow:0 0 15px #f2c14e70}.progress-rail button.past i{background:#b19a63}.rail-label{opacity:0;position:absolute;left:55px;white-space:nowrap;transition:opacity .25s}.progress-rail button:hover .rail-label{opacity:1}.story-toolbar{position:fixed;bottom:0;left:0;right:0;z-index:25;height:76px;padding:0 5%;border-top:1px solid var(--line);display:flex;align-items:center;gap:30px;background:#080f17ed;backdrop-filter:blur(16px)}.chapter-menu-trigger{min-width:180px}.chapter-progress{height:1px;background:#687b8740;flex:1;max-width:300px}.chapter-progress>span{display:block;height:1px;background:var(--lamp);transition:width .2s linear}.story-toolbar .reader-controls{margin-left:auto}.story-next{border:0;background:transparent;display:flex;align-items:center;justify-content:flex-end;gap:18px;font-size:11px;color:var(--lamp);min-width:120px;min-height:44px}.chapter-menu-list{margin:25px 0}.chapter-menu-list>button{display:flex;align-items:center;gap:20px;width:100%;border:0;border-top:1px solid var(--line);background:transparent;text-align:left;padding:18px 0;font-size:12px}.chapter-menu-list>button>span:first-child{color:var(--lamp);font-size:10px}.chapter-menu-list>button>svg,.chapter-menu-list>button>span:last-child:not(:first-child){margin-left:auto}.chapter-menu-list>button[aria-current=step]{color:var(--lamp)}.choice-heading{text-align:center;padding-top:15px}.choice-heading>.eyebrow{font-size:8px;color:var(--muted);margin-bottom:20px}.choice-heading h2{font-size:3.5rem}.choice-heading>p:last-child{font-size:12px;color:var(--muted);line-height:1.8}.choice-options{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}.choice-option{display:flex;align-items:flex-start;flex-direction:column;gap:15px;text-align:left;border:1px solid #9c845645;background:#f2c14e05;padding:25px;transition:background .25s,border-color .25s;min-height:280px}.choice-option:hover{background:#f2c14e0f;border-color:var(--lamp)}.choice-option>svg,.choice-option>.eyebrow{color:var(--lamp)}.choice-option>.eyebrow{font-size:8px;margin-top:5px}.choice-option strong{font-family:var(--font-display);font-size:1.8rem;line-height:1.15;font-weight:400}.choice-option>span:not(.eyebrow){color:var(--muted);font-size:12px;line-height:1.8}.choice-option>svg:last-child{margin-top:auto;align-self:flex-end}.choice-rescue{border-color:#6bcbbf45;background:#6bcbbf05}.choice-rescue>svg,.choice-rescue>.eyebrow{color:var(--safe-choice)}.choice-rescue:hover{background:#6bcbbf0f;border-color:var(--safe-choice)}.choice-note{text-align:center}.ending-card{margin-top:30px}.ending-card>.eyebrow{color:var(--lamp);font-size:9px}.ending-actions{display:flex;gap:25px;justify-content:center;align-items:center;margin:25px 0}.ending-card .fineprint{font-size:10px;line-height:1.8}.reading-mode .chapter-stage{height:auto;min-height:100svh;overflow:visible;padding:210px 15% 160px 20%}.reading-mode .chapter-title-card{position:relative;top:auto;left:auto;right:auto;transform:none;margin:0 auto 90px}.reading-mode .chapter-title-card h1{font-size:var(--display)}.reading-mode .narrative-panel{position:relative;left:auto;right:auto;top:auto;transform:none;opacity:1;visibility:visible;margin:0 auto 65px}.reading-mode .narrative-panel>p{font-size:clamp(1.5rem,2.5vw,2.3rem);line-height:1.6}.reading-mode .caption-track{position:relative;left:auto;right:auto;bottom:auto;margin:30px auto 0;max-width:100%;font-size:11px}.reading-mode .story-background{position:absolute;inset:0;opacity:.4;background-attachment:fixed}.reading-mode .story-vignette{position:absolute;inset:0}.reading-mode .chapter-progress{display:none}
-@media(max-width:1000px){.toolbar-chapter-name{display:none}.chapter-menu-trigger{min-width:75px}.story-toolbar{gap:20px}.chapter-title-card{left:15%;right:10%}.narrative-panel{left:19%;right:13%}.story-toolbar .compact .control-button>span{display:none}}
-@media(max-width:760px){.header-story{height:75px}.chapter-stage{min-height:560px}.chapter-meta{top:100px;left:7%;right:7%}.chapter-meta .eyebrow{font-size:7px;max-width:70%}.chapter-clock{font-size:1.1rem}.progress-rail{display:none}.chapter-title-card{left:7%;right:7%;top:46%}.chapter-title-card h1{font-size:clamp(3.2rem,12vw,4.5rem);margin:22px auto}.chapter-title-card>.eyebrow{font-size:8px}.chapter-subtitle{font-size:12px;max-width:300px}.chapter-ornament{margin-top:25px}.chapter-instruction{font-size:7px;margin-top:25px}.narrative-panel{left:9%;right:9%;top:46%}.narrative-panel>p{font-size:1.8rem;line-height:1.45}.passage-number{margin-bottom:20px;font-size:8px}.caption-track{bottom:95px;left:7%;right:7%;max-width:86%;font-size:9px;padding:8px 10px;line-height:1.6}.story-toolbar{height:70px;gap:14px;padding:0 5%}.chapter-menu-trigger{min-width:60px;font-size:10px;gap:8px}.chapter-progress{display:none}.story-toolbar .reader-controls{gap:13px}.story-toolbar .control-divider{display:none}.story-next{font-size:10px;min-width:95px;gap:8px}.choice-heading h2{font-size:2.7rem}.choice-heading>p:last-child{font-size:11px}.choice-options{gap:12px}.choice-option{padding:17px;min-height:260px;gap:12px}.choice-option strong{font-size:1.6rem}.choice-option>span:not(.eyebrow){font-size:10px}.choice-option>.eyebrow{font-size:7px}.narrative-quote blockquote{font-size:2rem}.ending-actions{flex-direction:column;gap:15px}.ending-card .button{min-height:45px;padding:10px 18px;font-size:11px}.reading-mode .chapter-stage{padding:175px 7% 130px}.reading-mode .chapter-title-card{margin-bottom:55px}.reading-mode .chapter-title-card h1{font-size:3.5rem}.reading-mode .narrative-panel{margin-bottom:45px}.reading-mode .narrative-panel>p{font-size:1.65rem}.reading-mode .story-background{background-attachment:scroll}}
-.scene-lighthouse .story-background{background-image:url('/images/keeper.webp');filter:brightness(.65) saturate(.65);background-position:center}.scene-storm .story-background,.scene-choice .story-background{background-image:url('/images/storm.webp');filter:brightness(.6) saturate(.6)}.scene-dawn .story-background,.scene-epilogue .story-background{background-image:url('/images/dawn.webp');filter:brightness(.65) saturate(.65)}.chapter-stage{animation:scene-arrive .9s ease-out}.thumbnail-1{background-image:url('/images/keeper.webp')}.thumbnail-2,.thumbnail-3{background-image:url('/images/storm.webp')}.thumbnail-4,.thumbnail-5{background-image:url('/images/dawn.webp')}.dialog[open]{animation:dialog-arrive .25s ease-out}@keyframes scene-arrive{from{opacity:0}to{opacity:1}}@keyframes dialog-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.header-story {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(#05070fe0, transparent);
+  border: 0;
+}
+.header-story .desktop-nav,
+.header-story .header-cta {
+  display: none;
+}
+.header-story .brand {
+  opacity: 0.8;
+}
+.story-loading {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  color: var(--lamp);
+}
+.story-reader {
+  position: relative;
+  isolation: isolate;
+}
+.chapter-stage {
+  position: relative;
+  height: 100svh;
+  min-height: 650px;
+  width: 100%;
+  overflow: hidden;
+  background: #0c1622;
+  isolation: isolate;
+}
+.chapter-scroll {
+  position: relative;
+}
+.story-background {
+  position: absolute;
+  inset: -4%;
+  background: url("/images/north-point.webp") 65% center/cover no-repeat;
+  filter: brightness(0.5) saturate(0.5);
+  z-index: -3;
+}
+.story-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(#05070f90, #05070f40 40%, #05070fe8),
+    linear-gradient(90deg, #05070f80, transparent);
+  z-index: -2;
+}
+.scene-storm .story-background {
+  filter: brightness(0.26) saturate(0.6) hue-rotate(10deg);
+  transform: scale(1.06);
+}
+.scene-lighthouse .story-background {
+  filter: brightness(0.45) sepia(0.2);
+  background-position: 85% center;
+}
+.scene-choice .story-background {
+  filter: brightness(0.3) sepia(0.25);
+}
+.scene-dawn .story-background,
+.scene-epilogue .story-background {
+  filter: brightness(0.65) sepia(0.35);
+  background-position: center;
+}
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.chapter-meta {
+  position: absolute;
+  top: 135px;
+  left: 10%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: #a8b4bf;
+}
+.chapter-meta .eyebrow {
+  font-size: 9px;
+}
+.chapter-clock {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--lamp);
+}
+.chapter-title-card {
+  position: absolute;
+  left: 17%;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+.chapter-title-card > .eyebrow {
+  color: var(--lamp);
+  font-size: 10px;
+}
+.chapter-title-card > .eyebrow span {
+  padding: 0 12px;
+  color: var(--muted);
+}
+.chapter-title-card h1 {
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  line-height: 1.02;
+  max-width: 900px;
+  margin: 25px auto;
+  outline: none !important;
+}
+.chapter-subtitle {
+  font-size: var(--text-base);
+  color: #bdc6ce;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.chapter-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  color: var(--lamp);
+  margin-top: 35px;
+}
+.chapter-ornament > span {
+  width: 35px;
+  height: 1px;
+  background: #a08a5850;
+}
+.chapter-instruction {
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: #b5c2cb;
+  margin-top: 35px;
+}
+.narrative-panel {
+  position: absolute;
+  left: 23%;
+  right: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+.narrative-panel > p {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.passage-number {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--lamp);
+  margin-bottom: 30px;
+}
+.narrative-quote {
+  text-align: center;
+}
+.narrative-quote blockquote {
+  font-size: clamp(2rem, 3.6vw, 3.8rem);
+  line-height: 1.2;
+  margin: 0;
+}
+.narrative-quote .star-mark {
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+.caption-track {
+  position: absolute;
+  bottom: 110px;
+  left: 20%;
+  right: 20%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #b4c1cc;
+  background: #05070f80;
+  padding: 9px 14px;
+  width: fit-content;
+  margin: auto;
+  max-width: 70%;
+}
+.caption-icon {
+  color: var(--lamp);
+}
+.progress-rail {
+  position: fixed;
+  left: 3.7%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.progress-rail button {
+  position: relative;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #82939e;
+  padding: 8px 4px;
+  min-height: 30px;
+}
+.progress-rail button i {
+  height: 5px;
+  width: 5px;
+  background: #566779;
+  border-radius: 50%;
+}
+.progress-rail button.active {
+  color: var(--lamp);
+}
+.progress-rail button.active i {
+  background: var(--lamp);
+  box-shadow: 0 0 15px #f2c14e70;
+}
+.progress-rail button.past i {
+  background: #b19a63;
+}
+.rail-label {
+  opacity: 0;
+  position: absolute;
+  left: 55px;
+  white-space: nowrap;
+  transition: opacity 0.25s;
+}
+.progress-rail button:hover .rail-label {
+  opacity: 1;
+}
+.story-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  height: 76px;
+  padding: 0 5%;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: #080f17ed;
+  backdrop-filter: blur(16px);
+}
+.chapter-menu-trigger {
+  min-width: 180px;
+}
+.chapter-progress {
+  height: 1px;
+  background: #687b8740;
+  flex: 1;
+  max-width: 300px;
+}
+.chapter-progress > span {
+  display: block;
+  height: 1px;
+  background: var(--lamp);
+  transition: width 0.2s linear;
+}
+.story-toolbar .reader-controls {
+  margin-left: auto;
+}
+.story-next {
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  font-size: 11px;
+  color: var(--lamp);
+  min-width: 120px;
+  min-height: 44px;
+}
+.chapter-menu-list {
+  margin: 25px 0;
+}
+.chapter-menu-list > button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  padding: 18px 0;
+  font-size: 12px;
+}
+.chapter-menu-list > button > span:first-child {
+  color: var(--lamp);
+  font-size: 10px;
+}
+.chapter-menu-list > button > svg,
+.chapter-menu-list > button > span:last-child:not(:first-child) {
+  margin-left: auto;
+}
+.chapter-menu-list > button[aria-current="step"] {
+  color: var(--lamp);
+}
+.choice-heading {
+  text-align: center;
+  padding-top: 15px;
+}
+.choice-heading > .eyebrow {
+  font-size: 8px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.choice-heading h2 {
+  font-size: 3.5rem;
+}
+.choice-heading > p:last-child {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.choice-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+.choice-option {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  border: 1px solid #9c845645;
+  background: #f2c14e05;
+  padding: 25px;
+  transition:
+    background 0.25s,
+    border-color 0.25s;
+  min-height: 280px;
+}
+.choice-option:hover {
+  background: #f2c14e0f;
+  border-color: var(--lamp);
+}
+.choice-option > svg,
+.choice-option > .eyebrow {
+  color: var(--lamp);
+}
+.choice-option > .eyebrow {
+  font-size: 8px;
+  margin-top: 5px;
+}
+.choice-option strong {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1.15;
+  font-weight: 400;
+}
+.choice-option > span:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.choice-option > svg:last-child {
+  margin-top: auto;
+  align-self: flex-end;
+}
+.choice-rescue {
+  border-color: #6bcbbf45;
+  background: #6bcbbf05;
+}
+.choice-rescue > svg,
+.choice-rescue > .eyebrow {
+  color: var(--safe-choice);
+}
+.choice-rescue:hover {
+  background: #6bcbbf0f;
+  border-color: var(--safe-choice);
+}
+.choice-note {
+  text-align: center;
+}
+.ending-card {
+  margin-top: 30px;
+}
+.ending-card > .eyebrow {
+  color: var(--lamp);
+  font-size: 9px;
+}
+.ending-actions {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+}
+.ending-card .fineprint {
+  font-size: 10px;
+  line-height: 1.8;
+}
+.reading-mode .chapter-stage {
+  height: auto;
+  min-height: 100svh;
+  overflow: visible;
+  padding: 210px 15% 160px 20%;
+}
+.reading-mode .chapter-title-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  margin: 0 auto 90px;
+}
+.reading-mode .chapter-title-card h1 {
+  font-size: var(--display);
+}
+.reading-mode .narrative-panel {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  margin: 0 auto 65px;
+}
+.reading-mode .narrative-panel > p {
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+  line-height: 1.6;
+}
+.reading-mode .caption-track {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  margin: 30px auto 0;
+  max-width: 100%;
+  font-size: 11px;
+}
+.reading-mode .story-background {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  background-attachment: fixed;
+}
+.reading-mode .story-vignette {
+  position: absolute;
+  inset: 0;
+}
+.reading-mode .chapter-progress {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .toolbar-chapter-name {
+    display: none;
+  }
+  .chapter-menu-trigger {
+    min-width: 75px;
+  }
+  .story-toolbar {
+    gap: 20px;
+  }
+  .chapter-title-card {
+    left: 15%;
+    right: 10%;
+  }
+  .narrative-panel {
+    left: 19%;
+    right: 13%;
+  }
+  .story-toolbar .compact .control-button > span {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .header-story {
+    height: 75px;
+  }
+  .chapter-stage {
+    min-height: 560px;
+  }
+  .chapter-meta {
+    top: 100px;
+    left: 7%;
+    right: 7%;
+  }
+  .chapter-meta .eyebrow {
+    font-size: 7px;
+    max-width: 70%;
+  }
+  .chapter-clock {
+    font-size: 1.1rem;
+  }
+  .progress-rail {
+    display: none;
+  }
+  .chapter-title-card {
+    left: 7%;
+    right: 7%;
+    top: 46%;
+  }
+  .chapter-title-card h1 {
+    font-size: clamp(3.2rem, 12vw, 4.5rem);
+    margin: 22px auto;
+  }
+  .chapter-title-card > .eyebrow {
+    font-size: 8px;
+  }
+  .chapter-subtitle {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  .chapter-ornament {
+    margin-top: 25px;
+  }
+  .chapter-instruction {
+    font-size: 7px;
+    margin-top: 25px;
+  }
+  .narrative-panel {
+    left: 9%;
+    right: 9%;
+    top: 46%;
+  }
+  .narrative-panel > p {
+    font-size: 1.8rem;
+    line-height: 1.45;
+  }
+  .passage-number {
+    margin-bottom: 20px;
+    font-size: 8px;
+  }
+  .caption-track {
+    bottom: 95px;
+    left: 7%;
+    right: 7%;
+    max-width: 86%;
+    font-size: 9px;
+    padding: 8px 10px;
+    line-height: 1.6;
+  }
+  .story-toolbar {
+    height: 70px;
+    gap: 14px;
+    padding: 0 5%;
+  }
+  .chapter-menu-trigger {
+    min-width: 60px;
+    font-size: 10px;
+    gap: 8px;
+  }
+  .chapter-progress {
+    display: none;
+  }
+  .story-toolbar .reader-controls {
+    gap: 13px;
+  }
+  .story-toolbar .control-divider {
+    display: none;
+  }
+  .story-next {
+    font-size: 10px;
+    min-width: 95px;
+    gap: 8px;
+  }
+  .choice-heading h2 {
+    font-size: 2.7rem;
+  }
+  .choice-heading > p:last-child {
+    font-size: 11px;
+  }
+  .choice-options {
+    gap: 12px;
+  }
+  .choice-option {
+    padding: 17px;
+    min-height: 260px;
+    gap: 12px;
+  }
+  .choice-option strong {
+    font-size: 1.6rem;
+  }
+  .choice-option > span:not(.eyebrow) {
+    font-size: 10px;
+  }
+  .choice-option > .eyebrow {
+    font-size: 7px;
+  }
+  .narrative-quote blockquote {
+    font-size: 2rem;
+  }
+  .ending-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .ending-card .button {
+    min-height: 45px;
+    padding: 10px 18px;
+    font-size: 11px;
+  }
+  .reading-mode .chapter-stage {
+    padding: 175px 7% 130px;
+  }
+  .reading-mode .chapter-title-card {
+    margin-bottom: 55px;
+  }
+  .reading-mode .chapter-title-card h1 {
+    font-size: 3.5rem;
+  }
+  .reading-mode .narrative-panel {
+    margin-bottom: 45px;
+  }
+  .reading-mode .narrative-panel > p {
+    font-size: 1.65rem;
+  }
+  .reading-mode .story-background {
+    background-attachment: scroll;
+  }
+}
+.scene-lighthouse .story-background {
+  background-image: url("/images/keeper.webp");
+  filter: brightness(0.65) saturate(0.65);
+  background-position: center;
+}
+.scene-storm .story-background,
+.scene-choice .story-background {
+  background-image: url("/images/storm.webp");
+  filter: brightness(0.6) saturate(0.6);
+}
+.scene-dawn .story-background,
+.scene-epilogue .story-background {
+  background-image: url("/images/dawn.webp");
+  filter: brightness(0.65) saturate(0.65);
+}
+.chapter-stage {
+  animation: scene-arrive 0.9s ease-out;
+}
+.thumbnail-1 {
+  background-image: url("/images/keeper.webp");
+}
+.thumbnail-2,
+.thumbnail-3 {
+  background-image: url("/images/storm.webp");
+}
+.thumbnail-4,
+.thumbnail-5 {
+  background-image: url("/images/dawn.webp");
+}
+.dialog[open] {
+  animation: dialog-arrive 0.25s ease-out;
+}
+@keyframes scene-arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 760px) {
+  .cinematic-mode .chapter-progress {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: none;
+    width: 100%;
+    height: 2px;
+  }
+  .cinematic-mode .chapter-progress > span {
+    height: 2px;
+  }
+}

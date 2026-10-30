@@ -3,45 +3,173 @@
   "subtitle": "Some lights are worth keeping.",
   "chapters": [
     {
-      "slug": "prologue", "title": "Where the sea remembers", "label": "Prologue", "subtitle": "Every coast has a story. This one has been waiting for you.", "scene": "fog", "time": "18:42", "location": "North Point · October, 1987", "unlockFlag": "shore",
-      "paragraphs": ["The last ferry leaves before sunset. You watch its small white wake unravel into the Atlantic, taking the mainland with it.", "Ahead, on a finger of black rock, stands North Point. A lighthouse. A keeper's house. A light that has turned, without fail, for a hundred and thirteen years.", "Your father's letter is folded in your coat pocket. Six words, in a hand you almost remember: Come before the light goes out."],
-      "quote": "The sea keeps everything. Even the things we try to forget.", "caption": "Waves wash against the causeway. Somewhere in the fog, a bell rings."
+      "slug": "prologue",
+      "title": "Where the sea remembers",
+      "label": "Prologue",
+      "subtitle": "Every coast has a story. This one has been waiting for you.",
+      "scene": "fog",
+      "time": "18:42",
+      "location": "North Point · October, 1987",
+      "unlockFlag": "shore",
+      "paragraphs": [
+        "The last ferry leaves before sunset. You watch its small white wake unravel into the Atlantic, taking the mainland with it.",
+        "Ahead, on a finger of black rock, stands North Point. A lighthouse. A keeper's house. A light that has turned, without fail, for a hundred and thirteen years.",
+        "Your father's letter is folded in your coat pocket. Six words, in a hand you almost remember: Come before the light goes out."
+      ],
+      "quote": "The sea keeps everything. Even the things we try to forget.",
+      "caption": "Waves wash against the causeway. Somewhere in the fog, a bell rings."
     },
     {
-      "slug": "the-keeper", "title": "A keeper of small things", "label": "The Keeper", "subtitle": "You thought you came to say goodbye.", "scene": "lighthouse", "time": "19:16", "location": "The keeper's house", "unlockFlag": "keeper",
-      "paragraphs": ["Inside, everything is smaller than you remember. The kitchen table. The iron stove. Your father's shoulders beneath his woollen jumper.", "He puts a second cup beside his own, as though you have only been gone an afternoon. Between you lies a brass key and a logbook, open to a page dated thirty years ago.", "Your mother's name is written there. Beside it: Signal lost. Search abandoned at dawn. Your father looks towards the tower. Some people leave a porch light on, he says. I had something a little bigger."],
-      "quote": "I didn't keep the light for the ships. Not only for the ships.", "caption": "A kettle whistles. The lighthouse mechanism turns overhead."
+      "slug": "the-keeper",
+      "title": "A keeper of small things",
+      "label": "The Keeper",
+      "subtitle": "You thought you came to say goodbye.",
+      "scene": "lighthouse",
+      "time": "19:16",
+      "location": "The keeper's house",
+      "unlockFlag": "keeper",
+      "paragraphs": [
+        "Inside, everything is smaller than you remember. The kitchen table. The iron stove. Your father's shoulders beneath his woollen jumper.",
+        "He puts a second cup beside his own, as though you have only been gone an afternoon. Between you lies a brass key and a logbook, open to a page dated thirty years ago.",
+        "Your mother's name is written there. Beside it: Signal lost. Search abandoned at dawn. Your father looks towards the tower. Some people leave a porch light on, he says. I had something a little bigger."
+      ],
+      "quote": "I didn't keep the light for the ships. Not only for the ships.",
+      "caption": "A kettle whistles. The lighthouse mechanism turns overhead."
     },
     {
-      "slug": "the-storm", "title": "What the dark brings in", "label": "The Storm", "subtitle": "There are nights the sea refuses to be quiet.", "scene": "storm", "time": "23:08", "location": "The lantern room", "unlockFlag": "storm",
-      "paragraphs": ["The storm arrives all at once. Rain strikes the glass sideways. Below you, the causeway disappears beneath white water. The mainland is a country you can no longer reach.", "Then the radio crackles. A fishing boat, engine dead, drifting towards the eastern reef. Two souls aboard. Through the static, a child asks if anyone can hear them.", "The old generator coughs. Your father catches the railing. There is enough fuel for one last burn: keep the great lamp turning, or carry its reserve down to the rescue launch. You cannot do both."],
-      "quote": "For the first time in a hundred years, the light hesitates.", "caption": "Wind rises. Three radio clicks. A child's voice beneath the static."
+      "slug": "the-storm",
+      "title": "What the dark brings in",
+      "label": "The Storm",
+      "subtitle": "There are nights the sea refuses to be quiet.",
+      "scene": "storm",
+      "time": "23:08",
+      "location": "The lantern room",
+      "unlockFlag": "storm",
+      "paragraphs": [
+        "The storm arrives all at once. Rain strikes the glass sideways. Below you, the causeway disappears beneath white water. The mainland is a country you can no longer reach.",
+        "Then the radio crackles. A fishing boat, engine dead, drifting towards the eastern reef. Two souls aboard. Through the static, a child asks if anyone can hear them.",
+        "The old generator coughs. Your father catches the railing. There is enough fuel for one last burn: keep the great lamp turning, or carry its reserve down to the rescue launch. You cannot do both."
+      ],
+      "quote": "For the first time in a hundred years, the light hesitates.",
+      "caption": "Wind rises. Three radio clicks. A child's voice beneath the static."
     },
     {
-      "slug": "the-choice", "title": "One light. Two ways home.", "label": "The Choice", "subtitle": "A promise can be kept in more than one way.", "scene": "choice", "time": "23:47", "location": "At the foot of the tower", "unlockFlag": "choice",
-      "paragraphs": ["Your father presses the brass key into your palm. For thirty years, I thought keeping this place alive was the same as keeping her here.", "The radio calls again. Beyond the glass, a small light rises and falls between the waves. The lamp above you waits. So does the launch below.", "No one tells you what the right thing is. Perhaps that is what it means to become the keeper."],
-      "quote": "What do we owe the things we love?", "caption": "The generator slows. A distant boat horn. Your breath in the silence."
+      "slug": "the-choice",
+      "title": "One light. Two ways home.",
+      "label": "The Choice",
+      "subtitle": "A promise can be kept in more than one way.",
+      "scene": "choice",
+      "time": "23:47",
+      "location": "At the foot of the tower",
+      "unlockFlag": "choice",
+      "paragraphs": [
+        "Your father presses the brass key into your palm. For thirty years, I thought keeping this place alive was the same as keeping her here.",
+        "The radio calls again. Beyond the glass, a small light rises and falls between the waves. The lamp above you waits. So does the launch below.",
+        "No one tells you what the right thing is. Perhaps that is what it means to become the keeper."
+      ],
+      "quote": "What do we owe the things we love?",
+      "caption": "The generator slows. A distant boat horn. Your breath in the silence."
     },
     {
-      "slug": "first-light", "title": "The shape of a new day", "label": "First Light", "subtitle": "Every ending leaves a light somewhere.", "scene": "dawn", "time": "06:12", "location": "North Point · The next morning", "unlockFlag": "dawn",
-      "paragraphs": [], "quote": "Nothing is truly lost while someone remembers the way home.", "caption": "The storm has passed. Gulls gather over a quiet sea."
+      "slug": "first-light",
+      "title": "The shape of a new day",
+      "label": "First Light",
+      "subtitle": "Every ending leaves a light somewhere.",
+      "scene": "dawn",
+      "time": "06:12",
+      "location": "North Point · The next morning",
+      "unlockFlag": "dawn",
+      "paragraphs": [],
+      "quote": "Nothing is truly lost while someone remembers the way home.",
+      "caption": "The storm has passed. Gulls gather over a quiet sea."
     },
     {
-      "slug": "epilogue", "title": "Some lights stay with you", "label": "Epilogue", "subtitle": "Thank you for finding your way here.", "scene": "epilogue", "time": "07:03", "location": "The road home", "unlockFlag": "complete",
-      "paragraphs": ["Years from now, you will remember the salt on your hands. The weight of a little brass key. The way your father stood in the doorway that morning, letting the day come to him.", "You will tell this story differently each time. But there will always be a light. And someone, somewhere, finding their way towards it."],
-      "quote": "A story ends. Its light travels on.", "caption": "Footsteps on the causeway. The tide begins to turn."
+      "slug": "epilogue",
+      "title": "Some lights stay with you",
+      "label": "Epilogue",
+      "subtitle": "Thank you for finding your way here.",
+      "scene": "epilogue",
+      "time": "07:03",
+      "location": "The road home",
+      "unlockFlag": "complete",
+      "paragraphs": [
+        "Years from now, you will remember the salt on your hands. The weight of a little brass key. The way your father stood in the doorway that morning, letting the day come to him.",
+        "You will tell this story differently each time. But there will always be a light. And someone, somewhere, finding their way towards it."
+      ],
+      "quote": "A story ends. Its light travels on.",
+      "caption": "Footsteps on the causeway. The tide begins to turn."
     }
   ],
   "endings": {
-    "beacon": { "title": "The light we keep", "eyebrow": "Ending A · The Beacon", "description": "You kept the light burning. A promise became a way home.", "paragraphs": ["You turn the key. The great lamp blooms against the dark, throwing a golden road across the reef. On the radio, you guide the boat between the rocks, one bearing at a time.", "At dawn, two strangers climb the lighthouse steps: a fisherman and his daughter. She asks your father if he is the man who put the sun back. He laughs for the first time in years.", "The tower stays. Not as a monument to someone lost, but as a promise to whoever is still out there. Next to your mother's name in the logbook, you write: Two souls brought home."] },
-    "rescue": { "title": "The light we carry", "eyebrow": "Ending B · The Rescue", "description": "You took the light into the dark. A new kind of keeper was born.", "paragraphs": ["You lift the reserve canister and run for the launch. Behind you, the great lamp goes dark. For a moment the whole coast seems to hold its breath.", "Your father takes the tiller. You take the searchlight. Together you find the little boat, a fisherman holding his daughter above the rising water. Four of you return with the dawn.", "The tower never turns again. But in the harbour, a rescue station opens beneath its old brass lamp. Above the door, your father hangs a sign: North Point. Still bringing people home."] }
+    "beacon": {
+      "title": "The light we keep",
+      "eyebrow": "Ending A · The Beacon",
+      "description": "You kept the light burning. A promise became a way home.",
+      "paragraphs": [
+        "You turn the key. The great lamp blooms against the dark, throwing a golden road across the reef. On the radio, you guide the boat between the rocks, one bearing at a time.",
+        "At dawn, two strangers climb the lighthouse steps: a fisherman and his daughter. She asks your father if he is the man who put the sun back. He laughs for the first time in years.",
+        "The tower stays. Not as a monument to someone lost, but as a promise to whoever is still out there. Next to your mother's name in the logbook, you write: Two souls brought home."
+      ]
+    },
+    "rescue": {
+      "title": "The light we carry",
+      "eyebrow": "Ending B · The Rescue",
+      "description": "You took the light into the dark. A new kind of keeper was born.",
+      "paragraphs": [
+        "You lift the reserve canister and run for the launch. Behind you, the great lamp goes dark. For a moment the whole coast seems to hold its breath.",
+        "Your father takes the tiller. You take the searchlight. Together you find the little boat, a fisherman holding his daughter above the rising water. Four of you return with the dawn.",
+        "The tower never turns again. But in the harbour, a rescue station opens beneath its old brass lamp. Above the door, your father hangs a sign: North Point. Still bringing people home."
+      ]
+    }
   },
   "lore": [
-    { "slug": "the-letter", "title": "The letter", "category": "Correspondence", "date": "24 October, 1987", "unlockFlag": "shore", "body": "Come before the light goes out.\n\nSix words on a postcard, sent from a village that no longer has a post office. Your father must have walked the causeway himself to send it. On the reverse is a faded photograph of North Point before the war. In the corner, his thumbprint, in lamp oil." },
-    { "slug": "brass-key", "title": "The brass key", "category": "Found object", "date": "Passed down since 1874", "unlockFlag": "keeper", "body": "A heavy brass key, warm from your father's hand. The teeth have been filed twice; the initials E.M. are scratched into the bow. Your mother's initials. She used to say a key was simply a promise that there would be a door when you needed one." },
-    { "slug": "keepers-log", "title": "The keeper's log", "category": "Logbook", "date": "7 November, 1957", "unlockFlag": "keeper", "body": "Wind NNE. Visibility poor. Lantern lit 16:38.\n\nEleanor overdue from the mainland. Coastguard contacted 21:10. Signal lost. Search abandoned at dawn.\n\nBelow, in a different ink: Lantern lit 16:38. And the next day: Lantern lit 16:38. Thirty years of entries follow." },
-    { "slug": "distress-call", "title": "The last transmission", "category": "Radio transcript", "date": "30 October, 1987 · 23:08", "unlockFlag": "storm", "body": "NORTH POINT, THIS IS MARIGOLD. Engine failure. Taking water east of the reef. Two aboard.\n\n[Static, 8 seconds]\n\nA second voice, smaller: Is the light still there? Dad says if we can see the light we'll be all right.\n\nThe recording ends. You remember answering." },
-    { "slug": "coastal-chart", "title": "A map of returning", "category": "Coastal chart", "date": "Surveyed in 1873", "unlockFlag": "choice", "body": "The eastern reef is marked in red. Safe water is marked in blue. But there are pencil lines between them, faint and careful: routes learned by heart, over a lifetime of watching the tide. Your father has circled the launch slip. Beside it: There is always another way." },
-    { "slug": "morning-note", "title": "A page unwritten", "category": "Personal effects", "date": "31 October, 1987", "unlockFlag": "complete", "body": "The last page of the logbook is blank. You leave it that way.\n\nSome things should be allowed to begin without knowing how they end.\n\nPressed between the pages is a small yellow flower, picked on the walk home." }
+    {
+      "slug": "the-letter",
+      "title": "The letter",
+      "category": "Correspondence",
+      "date": "24 October, 1987",
+      "unlockFlag": "shore",
+      "body": "Come before the light goes out.\n\nSix words on a postcard, sent from a village that no longer has a post office. Your father must have walked the causeway himself to send it. On the reverse is a faded photograph of North Point before the war. In the corner, his thumbprint, in lamp oil."
+    },
+    {
+      "slug": "brass-key",
+      "title": "The brass key",
+      "category": "Found object",
+      "date": "Passed down since 1874",
+      "unlockFlag": "keeper",
+      "body": "A heavy brass key, warm from your father's hand. The teeth have been filed twice; the initials E.M. are scratched into the bow. Your mother's initials. She used to say a key was simply a promise that there would be a door when you needed one."
+    },
+    {
+      "slug": "keepers-log",
+      "title": "The keeper's log",
+      "category": "Logbook",
+      "date": "7 November, 1957",
+      "unlockFlag": "keeper",
+      "body": "Wind NNE. Visibility poor. Lantern lit 16:38.\n\nEleanor overdue from the mainland. Coastguard contacted 21:10. Signal lost. Search abandoned at dawn.\n\nBelow, in a different ink: Lantern lit 16:38. And the next day: Lantern lit 16:38. Thirty years of entries follow."
+    },
+    {
+      "slug": "distress-call",
+      "title": "The last transmission",
+      "category": "Radio transcript",
+      "date": "30 October, 1987 · 23:08",
+      "unlockFlag": "storm",
+      "body": "NORTH POINT, THIS IS MARIGOLD. Engine failure. Taking water east of the reef. Two aboard.\n\n[Static, 8 seconds]\n\nA second voice, smaller: Is the light still there? Dad says if we can see the light we'll be all right.\n\nThe recording ends. You remember answering."
+    },
+    {
+      "slug": "coastal-chart",
+      "title": "A map of returning",
+      "category": "Coastal chart",
+      "date": "Surveyed in 1873",
+      "unlockFlag": "choice",
+      "body": "The eastern reef is marked in red. Safe water is marked in blue. But there are pencil lines between them, faint and careful: routes learned by heart, over a lifetime of watching the tide. Your father has circled the launch slip. Beside it: There is always another way."
+    },
+    {
+      "slug": "morning-note",
+      "title": "A page unwritten",
+      "category": "Personal effects",
+      "date": "31 October, 1987",
+      "unlockFlag": "complete",
+      "body": "The last page of the logbook is blank. You leave it that way.\n\nSome things should be allowed to begin without knowing how they end.\n\nPressed between the pages is a small yellow flower, picked on the walk home."
+    }
   ]
 }

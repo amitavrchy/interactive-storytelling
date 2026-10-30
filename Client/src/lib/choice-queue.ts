@@ -11,16 +11,29 @@ export async function flushVotes() {
     for (const vote of votes) {
       await api.post(`/choices/${CHOICE_ID}/vote`, vote);
       const pending: Vote[] = JSON.parse(localStorage.getItem(key) || "[]");
-      localStorage.setItem(key, JSON.stringify(pending.filter(v => v.requestId !== vote.requestId)));
+      localStorage.setItem(
+        key,
+        JSON.stringify(pending.filter((v) => v.requestId !== vote.requestId)),
+      );
     }
-  } catch { /* Keep the outbox for the next online event or story visit. */ }
-  finally { running = false; }
+  } catch {
+    /* Keep the outbox for the next online event or story visit. */
+  } finally {
+    running = false;
+  }
 }
 export function recordChoice(optionKey: Ending) {
   if (!apiConfigured) return;
   try {
     const votes: Vote[] = JSON.parse(localStorage.getItem(key) || "[]");
-    localStorage.setItem(key, JSON.stringify([...votes, { requestId: crypto.randomUUID(), optionKey }].slice(-20)));
+    localStorage.setItem(
+      key,
+      JSON.stringify(
+        [...votes, { requestId: crypto.randomUUID(), optionKey }].slice(-20),
+      ),
+    );
     void flushVotes();
-  } catch { /* Reading remains available if storage is blocked. */ }
+  } catch {
+    /* Reading remains available if storage is blocked. */
+  }
 }

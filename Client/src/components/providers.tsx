@@ -6,12 +6,23 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MotionConfig } from "framer-motion";
 import AuthProvider from "./auth-provider";
 import { makeStore, type AppStore, useAppSelector } from "@/lib/store";
-import { hydrate, initialProgress, progressSchema, storageUnavailable } from "@/features/story/storySlice";
+import {
+  hydrate,
+  initialProgress,
+  progressSchema,
+  storageUnavailable,
+} from "@/features/story/storySlice";
 
 function Preferences({ children }: { children: React.ReactNode }) {
-  const reduced = useAppSelector(s => s.story.reducedMotion);
-  useEffect(() => { document.documentElement.dataset.reducedMotion = String(reduced); }, [reduced]);
-  return <MotionConfig reducedMotion={reduced ? "always" : "user"}>{children}</MotionConfig>;
+  const reduced = useAppSelector((s) => s.story.reducedMotion);
+  useEffect(() => {
+    document.documentElement.dataset.reducedMotion = String(reduced);
+  }, [reduced]);
+  return (
+    <MotionConfig reducedMotion={reduced ? "always" : "user"}>
+      {children}
+    </MotionConfig>
+  );
 }
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -22,15 +33,45 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem("lighthouse-progress-v1");
-      const parsed = raw ? progressSchema.safeParse(JSON.parse(raw)) : null;
-      store.dispatch(hydrate(parsed?.success ? parsed.data : { ...initialProgress, reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches }));
-    } catch { store.dispatch(hydrate(initialProgress)); store.dispatch(storageUnavailable()); }
+      let parsed = null;
+      try {
+        parsed = raw ? progressSchema.safeParse(JSON.parse(raw)) : null;
+      } catch {
+        /* Discard a damaged save without treating storage as unavailable. */
+      }
+      store.dispatch(
+        hydrate(
+          parsed?.success
+            ? parsed.data
+            : {
+                ...initialProgress,
+                reducedMotion: matchMedia("(prefers-reduced-motion: reduce)")
+                  .matches,
+              },
+        ),
+      );
+    } catch {
+      store.dispatch(hydrate(initialProgress));
+      store.dispatch(storageUnavailable());
+    }
     return store.subscribe(() => {
       const { hydrated, ...saved } = store.getState().story;
       if (!hydrated) return;
-      try { localStorage.setItem("lighthouse-progress-v1", JSON.stringify(saved)); }
-      catch { if (store.getState().story.storageAvailable) store.dispatch(storageUnavailable()); }
+      try {
+        localStorage.setItem("lighthouse-progress-v1", JSON.stringify(saved));
+      } catch {
+        if (store.getState().story.storageAvailable)
+          store.dispatch(storageUnavailable());
+      }
     });
   }, [store]);
-  return <Provider store={store}><QueryClientProvider client={queryClient}><AuthProvider><Preferences>{children}</Preferences></AuthProvider></QueryClientProvider></Provider>;
+  return (
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <Preferences>{children}</Preferences>
+        </AuthProvider>
+      </QueryClientProvider>
+    </Provider>
+  );
 }
