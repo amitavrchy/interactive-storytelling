@@ -10,6 +10,7 @@ import { hydrate, initialProgress, progressSchema, storageUnavailable } from "@/
 
 function Preferences({ children }: { children: React.ReactNode }) {
   const reduced = useAppSelector(s => s.story.reducedMotion);
+  useEffect(() => { document.documentElement.dataset.reducedMotion = String(reduced); }, [reduced]);
   return <MotionConfig reducedMotion={reduced ? "always" : "user"}>{children}</MotionConfig>;
 }
 
