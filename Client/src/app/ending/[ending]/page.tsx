@@ -46,7 +46,7 @@ export default async function Page({
   return (
     <main id="main" className={`ending-page ending-${ending}`}>
       <Image
-        src="/images/north-point.webp"
+        src={ending === "rescue" ? "/images/rescue.webp" : "/images/dawn.webp"}
         alt="The North Point lighthouse overlooking the sea after a long night"
         fill
         priority

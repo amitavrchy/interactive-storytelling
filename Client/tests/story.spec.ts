@@ -174,6 +174,12 @@ test("reader account validates, saves cloud progress and restores after local re
 test("administrator edits copy, publishes a memory and sees real choice analytics", async ({
   page,
 }) => {
+  // Exercise an in-flight publish while immediately trying to change sections.
+  await page.route("**/admin/chapters/*", async (route) => {
+    if (route.request().method() === "PUT")
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    await route.continue();
+  });
   await page.goto("/admin");
   await expect(page.getByText("A keeper's key is required.")).toBeVisible();
   await page.goto("/account");

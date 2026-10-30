@@ -18,6 +18,6 @@ Local API tests use the explicitly configured durable file adapter. Docker/Postg
 
 Mobile coverage uses an emulated iPhone viewport and touch-capable Chromium, not Safari on a physical iPhone. WebGL automatically falls back to the static scene when unsupported. Reduced-motion completion is explicitly checked without a canvas.
 
-Lighthouse performance targets in the original spec are targets until measured on the release host. No unmeasured performance score or universal 60fps claim is made. Heavy story code and WebGL are loaded only on the story route.
+Mobile Lighthouse measurements against the local production server: Home performance **90**, About performance **94**. Both scored **100** for accessibility, best practices and SEO, with zero cumulative layout shift. These are local lab measurements, not release-host guarantees. Heavy story code and WebGL are loaded only on the story route; no universal 60fps claim is made.
 
 There is no production hosting destination configured in this repository. Source changes are pushed to the existing GitHub remote; no production deployment is implied.

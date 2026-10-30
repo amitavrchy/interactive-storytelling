@@ -2,7 +2,7 @@
 
 A cinematic interactive story about memory, belonging and finding a way home. Built from [PROJECT_SPEC.md](PROJECT_SPEC.md).
 
-Six chapters, two endings, four original cinematic environments, an unlockable archive, optional ocean ambience, a calm reading mode, accounts, cloud progress and a protected editorial studio.
+Six chapters, two endings, five original cinematic environments, an unlockable archive, optional ocean ambience, a calm reading mode, accounts, cloud progress and a protected editorial studio.
 
 ## Start locally
 

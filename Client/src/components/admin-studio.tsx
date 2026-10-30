@@ -249,6 +249,7 @@ export default function AdminStudio() {
             <div className="filter-tabs">
               <button
                 aria-pressed={tab === "chapters"}
+                disabled={busy}
                 onClick={() => {
                   setTab("chapters");
                   setDraft("");
@@ -261,6 +262,7 @@ export default function AdminStudio() {
               </button>
               <button
                 aria-pressed={tab === "lore"}
+                disabled={busy}
                 onClick={() => {
                   setTab("lore");
                   setDraft("");
@@ -273,7 +275,11 @@ export default function AdminStudio() {
               </button>
             </div>
             {tab === "lore" && (
-              <button className="control-button" onClick={addLore}>
+              <button
+                className="control-button"
+                onClick={addLore}
+                disabled={busy}
+              >
                 <Plus size={15} />
                 New memory
               </button>
@@ -288,6 +294,7 @@ export default function AdminStudio() {
               {records.data?.map((item) => (
                 <button
                   key={item.slug}
+                  disabled={busy}
                   className={selected === item.slug ? "selected" : ""}
                   onClick={() => select(item)}
                 >
@@ -308,6 +315,7 @@ export default function AdminStudio() {
                         <button
                           className="icon-button delete-button"
                           aria-label="Delete entry"
+                          disabled={busy}
                           onClick={() => setDeleting(true)}
                         >
                           <Trash2 size={15} />
@@ -327,6 +335,7 @@ export default function AdminStudio() {
                     Content JSON
                     <textarea
                       className="json-editor"
+                      disabled={busy}
                       spellCheck={false}
                       value={draft}
                       onChange={(e) => setDraft(e.target.value)}

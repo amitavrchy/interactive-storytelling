@@ -1,5 +1,8 @@
 name: Verify the lighthouse
 on: [push, pull_request]
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest

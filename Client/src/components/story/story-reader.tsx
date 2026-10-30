@@ -41,6 +41,10 @@ export default function StoryReader() {
   const seed = chapters[story.chapterIndex];
   const chapter = data?.find((c) => c.slug === seed.slug) || seed;
   const ending = story.ending ? endings[story.ending] : null;
+  const scene =
+    story.chapterIndex === 4 && story.ending === "rescue"
+      ? "harbour"
+      : chapter.scene;
   const paragraphs =
     story.chapterIndex === 4 && ending ? ending.paragraphs : chapter.paragraphs;
   const [menu, setMenu] = useState(false);
@@ -241,10 +245,12 @@ export default function StoryReader() {
         className="chapter-scroll"
         key={`${story.chapterIndex}-${reduced}`}
       >
-        <div ref={stage} className={`chapter-stage scene-${chapter.scene}`}>
+        <div ref={stage} className={`chapter-stage scene-${scene}`}>
           <div className="story-background" aria-hidden="true" />
           <div className="story-vignette" aria-hidden="true" />
-          {!reduced && <Atmosphere key={chapter.slug} scene={chapter.scene} />}
+          {!reduced && (
+            <Atmosphere key={`${chapter.slug}-${scene}`} scene={scene} />
+          )}
           <div className="chapter-meta">
             <span className="eyebrow">{chapter.location}</span>
             <span className="chapter-clock">{chapter.time}</span>
