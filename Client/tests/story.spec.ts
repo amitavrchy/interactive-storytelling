@@ -229,7 +229,7 @@ test("a failed API and damaged local save still allow the full reader to begin",
   await page.addInitScript(() =>
     localStorage.setItem("lighthouse-progress-v1", "damaged-json"),
   );
-  await page.route("http://localhost:4100/**", (route) => route.abort());
+  await page.route("http://localhost:5101/**", (route) => route.abort());
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/story");
   await expect(
@@ -264,6 +264,6 @@ test("keyboard choice is focus-trapped and clipboard refusal offers a selectable
   await page.goto("/ending/beacon");
   await page.getByRole("button", { name: "Copy ending link" }).click();
   await expect(page.getByRole("textbox", { name: "Ending link" })).toHaveValue(
-    "http://localhost:3100/ending/beacon",
+    "http://localhost:5100/ending/beacon",
   );
 });

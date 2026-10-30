@@ -42,7 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${serif.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${serif.variable}`}
+    >
       <body>
         <Providers>
           <a className="skip-link" href="#main">

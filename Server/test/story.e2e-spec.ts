@@ -144,6 +144,7 @@ describe('Real compiled API integration', () => {
     const restored = await request(base)
       .get('/progress')
       .set('Authorization', `Bearer ${token}`)
+      .expect('Cache-Control', 'no-store')
       .expect(200);
     expect(restored.body).toMatchObject(progress);
     const other = await request(base)

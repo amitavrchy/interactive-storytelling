@@ -13,7 +13,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/main.js",
     "lint": "oxlint --type-aware src/ test/",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -23,7 +23,10 @@
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
-    "start:local": "node --env-file-if-exists=.env.local dist/main.js"
+    "start:local": "node scripts/start-local.mjs",
+    "content:sync": "node scripts/sync-content.mjs",
+    "content:check": "node scripts/sync-content.mjs --check",
+    "test:postgres": "node scripts/postgres-smoke.mjs"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",

@@ -1,4 +1,4 @@
-# Artwork provenance
+# Artwork and image provenance
 
 Created with the built-in imagegen tool. The project asset is `Client/public/images/north-point.webp`; the full resolution source is `north-point-original.png` beside it.
 

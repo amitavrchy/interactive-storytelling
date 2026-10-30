@@ -1,4 +1,4 @@
-# Interactive Storytelling Website — Project Build Spec (Agent-Ready)
+# Interactive Storytelling Website — Project Build Spec
 
 > Stack: Next.js + Redux + RQ + RHF/zod + framer-motion + **gsap, lenis, three / r3f / drei**. NestJS + Prisma + JWT. Optional: `@gsap/react`, `howler` or Web Audio for ambient sound (document mute default), `leva` dev-only.
 

@@ -84,7 +84,7 @@
   color: #a8b4bf;
 }
 .chapter-meta .eyebrow {
-  font-size: 9px;
+  font-size: var(--text-min);
 }
 .chapter-clock {
   font-family: var(--font-display);
@@ -101,7 +101,7 @@
 }
 .chapter-title-card > .eyebrow {
   color: var(--lamp);
-  font-size: 10px;
+  font-size: var(--text-min);
 }
 .chapter-title-card > .eyebrow span {
   padding: 0 12px;
@@ -134,7 +134,7 @@
   background: #a08a5850;
 }
 .chapter-instruction {
-  font-size: 8px;
+  font-size: var(--text-min);
   letter-spacing: 0.25em;
   color: #b5c2cb;
   margin-top: 35px;
@@ -158,7 +158,7 @@
 }
 .passage-number {
   display: block;
-  font-size: 9px;
+  font-size: var(--text-min);
   letter-spacing: 0.2em;
   color: var(--lamp);
   margin-bottom: 30px;
@@ -185,7 +185,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: var(--text-min);
   color: #b4c1cc;
   background: #05070f80;
   padding: 9px 14px;
@@ -213,7 +213,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 9px;
+  font-size: var(--text-min);
   letter-spacing: 0.1em;
   color: #82939e;
   padding: 8px 4px;
@@ -285,7 +285,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 18px;
-  font-size: 11px;
+  font-size: var(--text-min);
   color: var(--lamp);
   min-width: 120px;
   min-height: 44px;
@@ -303,11 +303,11 @@
   background: transparent;
   text-align: left;
   padding: 18px 0;
-  font-size: 12px;
+  font-size: var(--text-min);
 }
 .chapter-menu-list > button > span:first-child {
   color: var(--lamp);
-  font-size: 10px;
+  font-size: var(--text-min);
 }
 .chapter-menu-list > button > svg,
 .chapter-menu-list > button > span:last-child:not(:first-child) {
@@ -321,7 +321,7 @@
   padding-top: 15px;
 }
 .choice-heading > .eyebrow {
-  font-size: 8px;
+  font-size: var(--text-min);
   color: var(--muted);
   margin-bottom: 20px;
 }
@@ -329,7 +329,7 @@
   font-size: 3.5rem;
 }
 .choice-heading > p:last-child {
-  font-size: 12px;
+  font-size: var(--text-min);
   color: var(--muted);
   line-height: 1.8;
 }
@@ -362,7 +362,7 @@
   color: var(--lamp);
 }
 .choice-option > .eyebrow {
-  font-size: 8px;
+  font-size: var(--text-min);
   margin-top: 5px;
 }
 .choice-option strong {
@@ -373,7 +373,7 @@
 }
 .choice-option > span:not(.eyebrow) {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-min);
   line-height: 1.8;
 }
 .choice-option > svg:last-child {
@@ -400,7 +400,7 @@
 }
 .ending-card > .eyebrow {
   color: var(--lamp);
-  font-size: 9px;
+  font-size: var(--text-min);
 }
 .ending-actions {
   display: flex;
@@ -410,7 +410,7 @@
   margin: 25px 0;
 }
 .ending-card .fineprint {
-  font-size: 10px;
+  font-size: var(--text-min);
   line-height: 1.8;
 }
 .reading-mode .chapter-stage {
@@ -451,7 +451,7 @@
   bottom: auto;
   margin: 30px auto 0;
   max-width: 100%;
-  font-size: 11px;
+  font-size: var(--text-min);
 }
 .reading-mode .story-background {
   position: absolute;
@@ -501,7 +501,7 @@
     right: 7%;
   }
   .chapter-meta .eyebrow {
-    font-size: 7px;
+    font-size: var(--text-min);
     max-width: 70%;
   }
   .chapter-clock {
@@ -520,17 +520,17 @@
     margin: 22px auto;
   }
   .chapter-title-card > .eyebrow {
-    font-size: 8px;
+    font-size: var(--text-min);
   }
   .chapter-subtitle {
-    font-size: 12px;
+    font-size: var(--text-min);
     max-width: 300px;
   }
   .chapter-ornament {
     margin-top: 25px;
   }
   .chapter-instruction {
-    font-size: 7px;
+    font-size: var(--text-min);
     margin-top: 25px;
   }
   .narrative-panel {
@@ -544,14 +544,14 @@
   }
   .passage-number {
     margin-bottom: 20px;
-    font-size: 8px;
+    font-size: var(--text-min);
   }
   .caption-track {
     bottom: 95px;
     left: 7%;
     right: 7%;
     max-width: 86%;
-    font-size: 9px;
+    font-size: var(--text-min);
     padding: 8px 10px;
     line-height: 1.6;
   }
@@ -562,7 +562,7 @@
   }
   .chapter-menu-trigger {
     min-width: 60px;
-    font-size: 10px;
+    font-size: var(--text-min);
     gap: 8px;
   }
   .chapter-progress {
@@ -575,7 +575,7 @@
     display: none;
   }
   .story-next {
-    font-size: 10px;
+    font-size: var(--text-min);
     min-width: 95px;
     gap: 8px;
   }
@@ -583,7 +583,7 @@
     font-size: 2.7rem;
   }
   .choice-heading > p:last-child {
-    font-size: 11px;
+    font-size: var(--text-min);
   }
   .choice-options {
     gap: 12px;
@@ -597,10 +597,10 @@
     font-size: 1.6rem;
   }
   .choice-option > span:not(.eyebrow) {
-    font-size: 10px;
+    font-size: var(--text-min);
   }
   .choice-option > .eyebrow {
-    font-size: 7px;
+    font-size: var(--text-min);
   }
   .narrative-quote blockquote {
     font-size: 2rem;
@@ -612,7 +612,7 @@
   .ending-card .button {
     min-height: 45px;
     padding: 10px 18px;
-    font-size: 11px;
+    font-size: var(--text-min);
   }
   .reading-mode .chapter-stage {
     padding: 175px 7% 130px;
@@ -701,4 +701,52 @@
 .scene-harbour .story-background {
   background-image: url("/images/rescue.webp");
   filter: brightness(0.65) saturate(0.65);
+}
+@media (max-width: 1000px) {
+  .story-toolbar {
+    gap: 12px;
+  }
+  .chapter-menu-trigger {
+    min-width: 0;
+  }
+}
+@media (max-width: 760px) {
+  .story-toolbar {
+    padding: 0 4%;
+    gap: 6px;
+  }
+  .story-toolbar .reader-controls {
+    gap: 4px;
+  }
+  .story-toolbar .control-button {
+    min-width: 40px;
+    justify-content: center;
+  }
+  .chapter-menu-trigger {
+    gap: 6px;
+  }
+  .story-next {
+    min-width: 0;
+    max-width: 130px;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  .chapter-meta .eyebrow {
+    max-width: 76%;
+    letter-spacing: 0.1em;
+  }
+  .caption-track {
+    bottom: 94px;
+  }
+  .choice-option .eyebrow {
+    letter-spacing: 0.1em;
+  }
+}
+@media (max-width: 480px) {
+  .choice-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .choice-option {
+    min-height: 240px;
+  }
 }

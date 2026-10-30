@@ -30,12 +30,31 @@ jobs:
           cache-dependency-path: |
             Server/package-lock.json
             Client/package-lock.json
-      - run: npm run setup
+      - run: npm ci
+        working-directory: Server
+      - run: npm ci
+        working-directory: Client
+      - run: npm run content:check
+        working-directory: Server
       - run: npm --prefix Server run db:migrate
       - run: npx playwright install --with-deps chromium
         working-directory: Client
       - run: npm test
-      - run: node scripts/postgres-smoke.mjs
+        working-directory: Server
+      - run: npm run test:e2e
+        working-directory: Server
+      - run: npm run test:e2e
+        working-directory: Client
+      - run: npm run test:postgres
+        working-directory: Server
+      - name: Validate production compose configuration
+        run: docker compose --env-file Server/.env.production.example -f Server/docker-compose.production.yml config --quiet
+      - name: Build production API image
+        run: docker build -t lighthouse-api:verify Server
+      - name: Build production client image
+        run: docker build --build-arg NEXT_PUBLIC_SITE_URL=https://story.example.test --build-arg NEXT_PUBLIC_API_URL=https://api.example.test -t lighthouse-client:verify Client
+      - name: Verify production containers
+        run: node Server/scripts/container-smoke.mjs
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

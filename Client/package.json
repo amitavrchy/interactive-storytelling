@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/prepare-standalone.mjs",
     "start": "next start",
     "lint": "eslint",
-    "test:e2e": "node ../scripts/browser-tests.mjs"
+    "test:e2e": "node scripts/browser-tests.mjs",
+    "dev:all": "node scripts/dev-project.mjs",
+    "dev:all:local": "node scripts/dev-project.mjs --local",
+    "content:sync": "node ../Server/scripts/sync-content.mjs",
+    "browser:install": "playwright install chromium",
+    "start:standalone": "node .next/standalone/server.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

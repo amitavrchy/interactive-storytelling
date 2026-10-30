@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.next-*/
+.cache/
 dist/
 out/
 .env
@@ -10,6 +12,7 @@ __pycache__/
 *.log
 .DS_Store
 !**/.env.example
+!**/.env.production.example
 .data/
 *.tsbuildinfo
 test-results/
