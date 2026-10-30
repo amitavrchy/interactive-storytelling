@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import { fileURLToPath } from "node:url";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: process.env.NETLIFY ? undefined : "standalone",
   distDir: process.env.NEXT_BUILD_DIR || ".next",
   devIndicators: false,
   outputFileTracingRoot: fileURLToPath(new URL(".", import.meta.url)),
