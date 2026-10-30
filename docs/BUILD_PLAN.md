@@ -10,6 +10,8 @@ Work follows PROJECT_SPEC.md. Each milestone is a separate, reviewable commit pu
 6. Connected features: account sync, admin editor, analytics, sharing and metadata.
 7. Verification: browser acceptance flows, backend integration coverage, builds and handoff docs.
 
-Canonical narrative content lives in `Shared/story.json`. Run `node scripts/sync-content.mjs` after editing it to update the backend seed. CMS edits override this seed when the API is configured.
+All seven milestones are implemented and pushed. Verification and infrastructure notes are recorded in `docs/VERIFICATION.md`.
+
+Canonical narrative content lives in `Shared/story.json`. Run `node scripts/sync-content.mjs` after editing it to update both application seeds. CMS edits override this seed when the API is configured.
 
 The reader works without an API: content and progress stay on the device. Cloud accounts, shared statistics and CMS require a configured backend. Backend supports PostgreSQL via Prisma; an explicit file-backed development mode is available for running without PostgreSQL.

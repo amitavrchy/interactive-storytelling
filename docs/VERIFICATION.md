@@ -14,7 +14,7 @@ Verified on 30 October 2026 with Node.js 24 on Windows.
 
 ## Infrastructure and interpretation
 
-Local API tests use the explicitly configured durable file adapter. Docker/PostgreSQL are not installed on this workstation, so a live local PostgreSQL test is not claimed. The migration is generated from the Prisma schema, and PostgreSQL verification is included in CI with an ephemeral PostgreSQL 16 service. CI status must be checked separately.
+Local API tests use the explicitly configured durable file adapter. PostgreSQL was also verified in [GitHub CI](https://github.com/amitavrchy/interactive-storytelling/actions/runs/41038031929) against an ephemeral PostgreSQL 16 service: migration deployment, Prisma seeding, registration, cloud progress and concurrent idempotent vote requests all passed. Docker/PostgreSQL are not installed on the local workstation.
 
 Mobile coverage uses an emulated iPhone viewport and touch-capable Chromium, not Safari on a physical iPhone. WebGL automatically falls back to the static scene when unsupported. Reduced-motion completion is explicitly checked without a canvas.
 
