@@ -1,0 +1,33 @@
+# The Last Lighthouse API with Postgres bundled inside the Docker web service.
+services:
+  - type: web
+    name: last-lighthouse-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Server/Dockerfile.render
+    dockerContext: ./Server
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: "0.0.0.0"
+      - key: PORT
+        value: "4000"
+      - key: STORAGE_MODE
+        value: database
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        value: postgres
+      - key: POSTGRES_DB
+        value: lighthouse
+      - key: DATABASE_URL
+        value: postgresql://postgres:postgres@127.0.0.1:5432/lighthouse
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGIN
+        sync: false
