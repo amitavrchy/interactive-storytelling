@@ -23,6 +23,7 @@ export default function HomeExperience() {
           alt="A solitary lighthouse casts a warm beam over a wild, misty Atlantic coastline at dusk"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           className="hero-art"
         />

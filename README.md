@@ -57,7 +57,7 @@ The canonical narrative is `Shared/story.json`. After editing it, run `npm run c
 Install the browser used by the acceptance suite once:
 
 ```sh
-npx --prefix Client playwright install chromium
+npm run browser:install
 npm test
 ```
 

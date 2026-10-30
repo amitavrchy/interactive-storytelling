@@ -7,7 +7,7 @@ export default function SiteFooter() {
   if (path === "/story") return null;
   return (
     <footer className="site-footer">
-      <Link href="/" aria-label="Home">
+      <Link href="/" aria-label="The Last Lighthouse. Home">
         <Brand small />
       </Link>
       <p>

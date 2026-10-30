@@ -21,7 +21,7 @@ export default function SiteHeader() {
     >
       <Link
         href="/"
-        aria-label="The Last Lighthouse home"
+        aria-label="The Last Lighthouse. Home"
         onClick={() => setMenu(false)}
       >
         <Brand />

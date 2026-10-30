@@ -46,7 +46,11 @@ export default function ReaderControls({
           className="control-button"
           onClick={toggleSound}
           aria-pressed={story.soundEnabled}
-          aria-label={story.soundEnabled ? "Turn sound off" : "Turn sound on"}
+          aria-label={
+            story.soundEnabled
+              ? "Sound on. Turn sound off"
+              : "Sound off. Turn sound on"
+          }
         >
           {story.soundEnabled ? (
             <AudioLines size={16} />
