@@ -1,0 +1,14 @@
+{
+  "name": "the-last-lighthouse",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22.12" },
+  "scripts": {
+    "setup": "npm --prefix Server ci && npm --prefix Client ci && node scripts/sync-content.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:local": "node scripts/dev.mjs --local",
+    "content:sync": "node scripts/sync-content.mjs",
+    "build": "npm --prefix Server run build && npm --prefix Client run build",
+    "test": "npm --prefix Server test && npm --prefix Server run test:e2e && npm --prefix Client run test:e2e"
+  }
+}
