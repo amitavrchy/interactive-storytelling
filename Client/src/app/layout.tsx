@@ -4,6 +4,7 @@ import Providers from "@/components/providers";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import "./globals.css";
+import "./story.css";
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const serif = Instrument_Serif({ variable: "--font-instrument", weight: "400", style: ["normal", "italic"], subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
