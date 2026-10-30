@@ -1,0 +1,2 @@
+"use client";
+export default function ErrorPage({ reset }: { reset: () => void }) { return <main id="main" className="section-wrap lost-page"><p className="eyebrow">A MOMENT OF FOG</p><h1>The coast will<br /><em>clear again.</em></h1><p className="muted">Something interrupted the story. Your saved place is still here.</p><button className="button button-gold" onClick={reset}>Try again →</button></main>; }

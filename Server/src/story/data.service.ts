@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, Logger, NotFoundException, OnModuleInit } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, Logger, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { readFileSync, writeFileSync, mkdirSync, renameSync, existsSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -49,13 +49,14 @@ export class DataService implements OnModuleInit {
   }
   async chapters(admin = false) { return this.fileMode ? this.data.chapters.filter(c => admin || c.published).sort((a,b) => a.sortOrder-b.sortOrder) : this.prisma.chapter.findMany({ where: admin ? {} : { published: true }, orderBy: { sortOrder: 'asc' } }); }
   async saveChapter(dto: ChapterDto, create = false) {
+    if (seed.chapters.some(c => c.slug === dto.slug) && !dto.published) throw new BadRequestException('Core story chapters must stay published. Edit their copy instead.');
     const exists = (await this.chapters(true)).some(c => c.slug === dto.slug);
     if (create && exists) throw new ConflictException('A chapter with this slug already exists.');
     if (!create && !exists) throw new NotFoundException('Chapter not found.');
     if (this.fileMode) { this.data.chapters = [...this.data.chapters.filter(c => c.slug !== dto.slug), dto as unknown as ChapterRecord]; this.persist(); return dto; }
     return this.prisma.chapter.upsert({ where: { slug: dto.slug }, update: { ...dto, contentJson: dto.contentJson as never }, create: { ...dto, contentJson: dto.contentJson as never } });
   }
-  async deleteChapter(slug: string) { if (!(await this.chapters(true)).some(c => c.slug === slug)) throw new NotFoundException('Chapter not found.'); if (this.fileMode) { this.data.chapters = this.data.chapters.filter(c => c.slug !== slug); this.persist(); } else await this.prisma.chapter.delete({ where: { slug } }); return { deleted: true }; }
+  async deleteChapter(slug: string) { if (seed.chapters.some(c => c.slug === slug)) throw new BadRequestException('Core story chapters cannot be deleted.'); if (!(await this.chapters(true)).some(c => c.slug === slug)) throw new NotFoundException('Chapter not found.'); if (this.fileMode) { this.data.chapters = this.data.chapters.filter(c => c.slug !== slug); this.persist(); } else await this.prisma.chapter.delete({ where: { slug } }); return { deleted: true }; }
   async lore() { if (this.fileMode) return this.data.lore; return (await this.prisma.loreEntry.findMany()).map(e => ({ slug: e.slug, title: e.title, body: e.body, unlockFlag: e.unlockFlag, ...(e.contentJson as { category: string; date: string }) })); }
   async saveLore(dto: LoreDto, create = false) {
     const exists = (await this.lore()).some(e => e.slug === dto.slug);

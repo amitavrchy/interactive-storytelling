@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MotionConfig } from "framer-motion";
+import AuthProvider from "./auth-provider";
 import { makeStore, type AppStore, useAppSelector } from "@/lib/store";
 import { hydrate, initialProgress, progressSchema, storageUnavailable } from "@/features/story/storySlice";
 
@@ -30,5 +31,5 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       catch { if (store.getState().story.storageAvailable) store.dispatch(storageUnavailable()); }
     });
   }, [store]);
-  return <Provider store={store}><QueryClientProvider client={queryClient}><Preferences>{children}</Preferences></QueryClientProvider></Provider>;
+  return <Provider store={store}><QueryClientProvider client={queryClient}><AuthProvider><Preferences>{children}</Preferences></AuthProvider></QueryClientProvider></Provider>;
 }
