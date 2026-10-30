@@ -2,7 +2,7 @@
 import { Component, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-type Scene = { scene: string };
+type Scene = { scene: string; scrollProgress: number };
 class SceneBoundary extends Component<
   { children: React.ReactNode },
   { failed: boolean }
@@ -15,7 +15,7 @@ class SceneBoundary extends Component<
     return this.state.failed ? null : this.props.children;
   }
 }
-function FogSea({ scene }: Scene) {
+function FogSea({ scene, scrollProgress }: Scene) {
   const points = useRef<THREE.Points>(null);
   const sea = useRef<THREE.Mesh>(null);
   const storm = scene === "storm";
@@ -25,10 +25,11 @@ function FogSea({ scene }: Scene) {
       data[i] = Math.sin(i * 127.1 + 311.7) * (i % 3 === 1 ? 5 : 12);
     return data;
   }, []);
-  useFrame(({ clock }) => {
+  useFrame(({ clock, camera }) => {
     const t = clock.elapsedTime;
+    camera.position.z = 8 - scrollProgress * 0.3;
     if (points.current) {
-      points.current.rotation.y = t * 0.012;
+      points.current.rotation.y = t * 0.012 + scrollProgress * 0.35;
       points.current.position.y = Math.sin(t * 0.15) * 0.2;
     }
     if (sea.current) {
@@ -53,7 +54,9 @@ function FogSea({ scene }: Scene) {
         </bufferGeometry>
         <pointsMaterial
           size={storm ? 0.035 : 0.055}
-          color={scene === "dawn" ? "#f2c14e" : "#b6c8d5"}
+          color={
+            scene === "dawn" || scene === "harbour" ? "#f2c14e" : "#b6c8d5"
+          }
           transparent
           opacity={0.3}
           depthWrite={false}
@@ -64,14 +67,14 @@ function FogSea({ scene }: Scene) {
         <meshBasicMaterial
           color={storm ? "#789baa" : "#466d86"}
           transparent
-          opacity={0.12}
-          wireframe
+          opacity={0.04}
+          depthWrite={false}
         />
       </mesh>
     </>
   );
 }
-export default function Atmosphere({ scene }: Scene) {
+export default function Atmosphere({ scene, scrollProgress }: Scene) {
   const [supported, setSupported] = useState(false);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
@@ -93,7 +96,7 @@ export default function Atmosphere({ scene }: Scene) {
           gl={{ alpha: true, antialias: false, powerPreference: "low-power" }}
           camera={{ position: [0, 0, 8], fov: 50 }}
         >
-          <FogSea scene={scene} />
+          <FogSea scene={scene} scrollProgress={scrollProgress} />
         </Canvas>
       </SceneBoundary>
     </div>

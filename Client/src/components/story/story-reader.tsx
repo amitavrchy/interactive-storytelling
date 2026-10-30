@@ -249,7 +249,11 @@ export default function StoryReader() {
           <div className="story-background" aria-hidden="true" />
           <div className="story-vignette" aria-hidden="true" />
           {!reduced && (
-            <Atmosphere key={`${chapter.slug}-${scene}`} scene={scene} />
+            <Atmosphere
+              key={`${chapter.slug}-${scene}`}
+              scene={scene}
+              scrollProgress={progress / 100}
+            />
           )}
           <div className="chapter-meta">
             <span className="eyebrow">{chapter.location}</span>
