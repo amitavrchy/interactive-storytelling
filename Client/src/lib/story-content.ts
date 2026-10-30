@@ -1,4 +1,4 @@
-import content from "../../../Shared/story.json";
+import content from "../content/story.json";
 
 export type Chapter = (typeof content.chapters)[number];
 export type LoreEntry = (typeof content.lore)[number];

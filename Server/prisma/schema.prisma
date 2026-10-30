@@ -13,3 +13,61 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  READER
+  ADMIN
+}
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String
+  name         String
+  role         Role @default(READER)
+  progress     StoryProgress?
+}
+
+model Chapter {
+  id          String @id @default(cuid())
+  slug        String @unique
+  title       String
+  sortOrder   Int
+  contentJson Json
+  published   Boolean @default(true)
+}
+
+model LoreEntry {
+  id         String @id @default(cuid())
+  slug       String @unique
+  title      String
+  body       String
+  unlockFlag String
+  coverImage String?
+  contentJson Json
+}
+
+model StoryProgress {
+  id          String @id @default(cuid())
+  userId      String @unique
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  flagsJson   Json
+  chapterSlug String?
+  ending      String?
+  updatedAt   DateTime @updatedAt
+}
+
+model ChoiceStat {
+  id        String @id @default(cuid())
+  choiceId  String
+  optionKey String
+  count     Int @default(0)
+  @@unique([choiceId, optionKey])
+}
+
+model ChoiceVote {
+  requestId String @id
+  choiceId  String
+  optionKey String
+  createdAt DateTime @default(now())
+}
+
