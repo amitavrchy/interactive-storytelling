@@ -43,6 +43,7 @@
 - Narrative display: `Instrument Serif` / `Newsreader`
 - UI chrome: `Inter`
 - Captions: slightly larger line-height 1.7
+- Minimum rendered font size: **14px** on every page, control, caption and mobile breakpoint; preserve this floor when the browser default font is smaller. Body copy defaults to 16px.
 
 ### Motion principles
 - **Scroll is the timeline.** GSAP ScrollTrigger owns chapter progress 0–1.

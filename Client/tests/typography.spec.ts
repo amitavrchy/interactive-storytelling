@@ -98,3 +98,20 @@ test("production standalone serves image assets with security headers", async ({
   expect(image.status()).toBe(200);
   expect(image.headers()["content-type"]).toContain("image/webp");
 });
+
+test("the 14px floor also holds when the browser's default font is smaller", async ({
+  page,
+  context,
+}) => {
+  const protocol = await context.newCDPSession(page);
+  await protocol.send("Page.setFontSizes", {
+    fontSizes: { standard: 12, fixed: 12 },
+  });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const path of ["/", "/account", "/archive", "/story"]) {
+    await page.goto(path);
+    await page.getByRole("heading", { level: 1 }).waitFor();
+    await checkTypography(page);
+  }
+  await protocol.detach();
+});
