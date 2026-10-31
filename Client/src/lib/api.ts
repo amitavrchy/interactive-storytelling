@@ -1,6 +1,7 @@
 import axios from "axios";
 import { chapters, lore, type Chapter, type LoreEntry } from "./story-content";
 import { useQuery } from "@tanstack/react-query";
+import { clearSession, sessionToken, SESSION_EXPIRED_EVENT } from "./session";
 
 export const apiConfigured = !!process.env.NEXT_PUBLIC_API_URL;
 export const api = axios.create({
@@ -9,16 +10,28 @@ export const api = axios.create({
 });
 api.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
-    let token: string | null = null;
-    try {
-      token = sessionStorage.getItem("lighthouse-token");
-    } catch {
-      /* Anonymous reading works with storage disabled. */
-    }
+    const token = sessionToken();
     if (token) config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (
+      typeof window !== "undefined" &&
+      axios.isAxiosError(error) &&
+      error.response?.status === 401 &&
+      sessionToken() &&
+      error.config?.headers.Authorization === `Bearer ${sessionToken()}` &&
+      !/^\/auth\/(login|register)$/.test(error.config.url || "")
+    ) {
+      clearSession();
+      window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
+    }
+    return Promise.reject(error);
+  },
+);
 export function errorMessage(error: unknown) {
   if (axios.isAxiosError(error)) {
     const message = error.response?.data?.message;

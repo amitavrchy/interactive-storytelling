@@ -27,7 +27,15 @@ const schema = z.object({
 });
 type Form = z.infer<typeof schema>;
 export default function Account() {
-  const { user, loading, accept, logout } = useAuth();
+  const {
+    user,
+    loading,
+    accept,
+    logout,
+    sessionError,
+    canReconnect,
+    retrySession,
+  } = useAuth();
   const story = useAppSelector((s) => s.story);
   const dispatch = useAppDispatch();
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -132,6 +140,17 @@ export default function Account() {
         </div>
       </div>
       <section className="account-panel" aria-label="Your account">
+        {sessionError && !loading && (
+          <div className="notice" role="status">
+            <p>{sessionError}</p>
+            {canReconnect && (
+              <button className="control-button" onClick={() => retrySession()}>
+                Reconnect to your account
+                <ArrowRight size={16} />
+              </button>
+            )}
+          </div>
+        )}
         {!apiConfigured ? (
           <>
             <p className="eyebrow">DEVICE EDITION</p>

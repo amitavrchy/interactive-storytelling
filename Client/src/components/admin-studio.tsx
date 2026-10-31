@@ -72,13 +72,15 @@ export default function AdminStudio() {
   const allowed = apiConfigured && user?.role === "ADMIN";
   const records = useQuery({
     queryKey: ["admin", tab],
-    queryFn: async () => (await api.get<RecordItem[]>(`/admin/${tab}`)).data,
+    queryFn: async ({ signal }) =>
+      (await api.get<RecordItem[]>(`/admin/${tab}`, { signal })).data,
     enabled: allowed,
     retry: false,
   });
   const stats = useQuery({
     queryKey: ["analytics"],
-    queryFn: async () => (await api.get<Analytics>("/admin/analytics")).data,
+    queryFn: async ({ signal }) =>
+      (await api.get<Analytics>("/admin/analytics", { signal })).data,
     enabled: allowed,
     retry: false,
     refetchInterval: allowed ? 30000 : false,
