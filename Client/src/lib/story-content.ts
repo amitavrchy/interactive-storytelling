@@ -1,6 +1,10 @@
 import content from "../content/story.json";
 
-export type Chapter = (typeof content.chapters)[number];
+export type EndingContent =
+  (typeof content.endings)[keyof typeof content.endings];
+export type Chapter = (typeof content.chapters)[number] & {
+  endings?: Record<Ending, EndingContent>;
+};
 export type LoreEntry = (typeof content.lore)[number];
 export type Ending = keyof typeof content.endings;
 export const chapters = content.chapters;

@@ -42,6 +42,15 @@ type Data = {
 type Seed = {
   chapters: Array<{ slug: string; title: string } & Record<string, unknown>>;
   lore: LoreDto[];
+  endings: Record<
+    'beacon' | 'rescue',
+    {
+      title: string;
+      eyebrow: string;
+      description: string;
+      paragraphs: string[];
+    }
+  >;
 };
 const seedPath = fileURLToPath(
   new URL('../content/story.json', import.meta.url),
@@ -163,14 +172,25 @@ export class DataService implements OnModuleInit {
     }
   }
   async chapters(admin = false) {
-    return this.fileMode
+    const records = this.fileMode
       ? this.data.chapters
           .filter((c) => admin || c.published)
           .sort((a, b) => a.sortOrder - b.sortOrder)
-      : this.prisma.chapter.findMany({
+      : await this.prisma.chapter.findMany({
           where: admin ? {} : { published: true },
           orderBy: { sortOrder: 'asc' },
         });
+    return records.map((chapter) =>
+      chapter.slug === 'first-light'
+        ? {
+            ...chapter,
+            contentJson: {
+              endings: seed.endings,
+              ...(chapter.contentJson as Record<string, unknown>),
+            },
+          }
+        : chapter,
+    );
   }
   async saveChapter(dto: ChapterDto, create = false) {
     if (seed.chapters.some((c) => c.slug === dto.slug) && !dto.published)

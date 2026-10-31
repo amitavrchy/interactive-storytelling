@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Save, RefreshCw, ArrowUpRight, Plus, Trash2 } from "lucide-react";
 import { z } from "zod";
@@ -31,6 +32,22 @@ const contentSchema = z.object({
   paragraphs: z.array(z.string().max(3000)).max(12),
   quote: z.string().min(1).max(500),
   caption: z.string().min(1).max(500),
+  endings: z
+    .object({
+      beacon: z.object({
+        title: z.string().min(1).max(160),
+        eyebrow: z.string().min(1).max(160),
+        description: z.string().min(1).max(500),
+        paragraphs: z.array(z.string().max(3000)).min(1).max(12),
+      }),
+      rescue: z.object({
+        title: z.string().min(1).max(160),
+        eyebrow: z.string().min(1).max(160),
+        description: z.string().min(1).max(500),
+        paragraphs: z.array(z.string().max(3000)).min(1).max(12),
+      }),
+    })
+    .optional(),
 });
 const chapterSchema = z.object({
   slug: z
@@ -59,16 +76,83 @@ function editable(record: RecordItem) {
   return JSON.stringify(value, null, 2);
 }
 export default function AdminStudio() {
+  const router = useRouter();
   const { user, loading } = useAuth();
   const client = useQueryClient();
   const [tab, setTab] = useState<"chapters" | "lore">("chapters");
   const [selected, setSelected] = useState("");
   const [draft, setDraft] = useState("");
+  const [savedDraft, setSavedDraft] = useState("");
+  const [discarding, setDiscarding] = useState(false);
+  const pendingAction = useRef<(() => void) | null>(null);
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const dirty = draft !== savedDraft;
+  useEffect(() => {
+    if (!dirty) return;
+    const beforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    const beforeNavigation = (event: MouseEvent) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const link =
+        event.target instanceof Element
+          ? event.target.closest<HTMLAnchorElement>("a[href]")
+          : null;
+      if (!link || link.download || (link.target && link.target !== "_self"))
+        return;
+      const destination = new URL(link.href, window.location.href);
+      if (
+        destination.origin !== window.location.origin ||
+        destination.pathname + destination.search ===
+          window.location.pathname + window.location.search
+      )
+        return;
+      event.preventDefault();
+      event.stopPropagation();
+      pendingAction.current = () =>
+        router.push(
+          destination.pathname + destination.search + destination.hash,
+        );
+      setDiscarding(true);
+    };
+    window.addEventListener("beforeunload", beforeUnload);
+    window.addEventListener("click", beforeNavigation, true);
+    return () => {
+      window.removeEventListener("beforeunload", beforeUnload);
+      window.removeEventListener("click", beforeNavigation, true);
+    };
+  }, [dirty, router]);
+  function changeSelection(action: () => void) {
+    if (dirty) {
+      pendingAction.current = action;
+      setDiscarding(true);
+    } else action();
+  }
+  function changeTab(next: "chapters" | "lore") {
+    if (next === tab) return;
+    changeSelection(() => {
+      setTab(next);
+      setDraft("");
+      setSavedDraft("");
+      setSelected("");
+      setCreating(false);
+      setError("");
+      setMessage("");
+    });
+  }
   const allowed = apiConfigured && user?.role === "ADMIN";
   const records = useQuery({
     queryKey: ["admin", tab],
@@ -88,6 +172,7 @@ export default function AdminStudio() {
   function select(item: RecordItem) {
     setSelected(item.slug);
     setDraft(editable(item));
+    setSavedDraft(editable(item));
     setCreating(false);
     setError("");
     setMessage("");
@@ -113,6 +198,7 @@ export default function AdminStudio() {
         );
       if (creating) await api.post(`/admin/${tab}`, result.data);
       else await api.put(`/admin/${tab}/${selected}`, result.data);
+      setSavedDraft(draft);
       setSelected(parsed.slug);
       setCreating(false);
       await client.invalidateQueries({ queryKey: ["admin", tab] });
@@ -132,6 +218,7 @@ export default function AdminStudio() {
     try {
       await api.delete(`/admin/${tab}/${selected}`);
       setDraft("");
+      setSavedDraft("");
       setSelected("");
       setDeleting(false);
       await client.invalidateQueries({ queryKey: ["admin", tab] });
@@ -144,6 +231,7 @@ export default function AdminStudio() {
     }
   }
   function addLore() {
+    setSavedDraft("");
     setSelected("");
     setCreating(true);
     setDraft(
@@ -252,26 +340,14 @@ export default function AdminStudio() {
               <button
                 aria-pressed={tab === "chapters"}
                 disabled={busy}
-                onClick={() => {
-                  setTab("chapters");
-                  setDraft("");
-                  setSelected("");
-                  setError("");
-                  setMessage("");
-                }}
+                onClick={() => changeTab("chapters")}
               >
                 Chapters
               </button>
               <button
                 aria-pressed={tab === "lore"}
                 disabled={busy}
-                onClick={() => {
-                  setTab("lore");
-                  setDraft("");
-                  setSelected("");
-                  setError("");
-                  setMessage("");
-                }}
+                onClick={() => changeTab("lore")}
               >
                 Archive memories
               </button>
@@ -279,7 +355,7 @@ export default function AdminStudio() {
             {tab === "lore" && (
               <button
                 className="control-button"
-                onClick={addLore}
+                onClick={() => changeSelection(addLore)}
                 disabled={busy}
               >
                 <Plus size={15} />
@@ -298,7 +374,10 @@ export default function AdminStudio() {
                   key={item.slug}
                   disabled={busy}
                   className={selected === item.slug ? "selected" : ""}
-                  onClick={() => select(item)}
+                  onClick={() => {
+                    if (item.slug !== selected || creating)
+                      changeSelection(() => select(item));
+                  }}
                 >
                   <span>{item.title}</span>
                   <small>{item.slug}</small>
@@ -311,6 +390,12 @@ export default function AdminStudio() {
                   <div className="editor-heading">
                     <p className="eyebrow">
                       {creating ? "NEW MEMORY" : selected}
+                      {dirty && (
+                        <span className="draft-indicator">
+                          {" "}
+                          · Unsaved changes
+                        </span>
+                      )}
                     </p>
                     <div>
                       {!coreChapter && !creating && (
@@ -372,6 +457,44 @@ export default function AdminStudio() {
           </section>
         </>
       )}
+      <Dialog
+        open={discarding}
+        onClose={() => {
+          setDiscarding(false);
+          pendingAction.current = null;
+        }}
+        title="Your words are still here"
+      >
+        <h2>
+          Keep your
+          <br />
+          <em>changes?</em>
+        </h2>
+        <p className="muted">
+          This entry has unpublished changes. Stay to finish editing, or discard
+          the draft before opening another entry.
+        </p>
+        <button
+          className="button button-gold full-width"
+          onClick={() => {
+            setDiscarding(false);
+            pendingAction.current = null;
+          }}
+        >
+          Keep editing
+        </button>
+        <button
+          className="button button-quiet full-width"
+          onClick={() => {
+            const action = pendingAction.current;
+            pendingAction.current = null;
+            setDiscarding(false);
+            action?.();
+          }}
+        >
+          Discard changes
+        </button>
+      </Dialog>
       <Dialog
         open={deleting}
         onClose={() => setDeleting(false)}

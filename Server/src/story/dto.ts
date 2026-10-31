@@ -1,12 +1,14 @@
 import { Type } from 'class-transformer';
 import {
   ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsBoolean,
   IsDefined,
   IsEmail,
   IsIn,
   IsInt,
+  IsOptional,
   IsString,
   IsUUID,
   Length,
@@ -45,6 +47,27 @@ export class ProgressDto {
   @IsBoolean() reducedMotion: boolean;
   @IsBoolean() captions: boolean;
 }
+export class EndingContentDto {
+  @IsString() @Length(1, 160) title: string;
+  @IsString() @Length(1, 160) eyebrow: string;
+  @IsString() @Length(1, 500) description: string;
+  @IsArray()
+  @IsString({ each: true })
+  @ArrayMinSize(1)
+  @ArrayMaxSize(12)
+  @MaxLength(3000, { each: true })
+  paragraphs: string[];
+}
+export class EndingVariantsDto {
+  @IsDefined()
+  @ValidateNested()
+  @Type(() => EndingContentDto)
+  beacon: EndingContentDto;
+  @IsDefined()
+  @ValidateNested()
+  @Type(() => EndingContentDto)
+  rescue: EndingContentDto;
+}
 export class ChapterContentDto {
   @IsString() @Length(1, 100) label: string;
   @IsString() @Length(1, 300) subtitle: string;
@@ -61,6 +84,10 @@ export class ChapterContentDto {
   paragraphs: string[];
   @IsString() @Length(1, 500) quote: string;
   @IsString() @Length(1, 500) caption: string;
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => EndingVariantsDto)
+  endings?: EndingVariantsDto;
 }
 export class ChapterDto {
   @IsString()

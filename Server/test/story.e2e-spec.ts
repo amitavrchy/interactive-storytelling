@@ -280,6 +280,43 @@ describe('Real compiled API integration', () => {
       .send(first)
       .expect(200);
   });
+  it('validates and publishes both ending variants through the chapter CMS', async () => {
+    const all = await request(base)
+      .get('/admin/chapters')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .expect(200);
+    const { id, ...chapter } = all.body.find(
+      (entry: { slug: string }) => entry.slug === 'first-light',
+    );
+    void id;
+    expect(
+      chapter.contentJson.endings.beacon.paragraphs.length,
+    ).toBeGreaterThan(0);
+    const edited = structuredClone(chapter);
+    edited.contentJson.endings.beacon.title = 'A published beacon ending';
+    await request(base)
+      .put('/admin/chapters/first-light')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send(edited)
+      .expect(200);
+    await request(base)
+      .get('/chapters/first-light')
+      .expect(200)
+      .expect((res) =>
+        expect(res.body.endings.beacon.title).toBe('A published beacon ending'),
+      );
+    edited.contentJson.endings.rescue.paragraphs = [];
+    await request(base)
+      .put('/admin/chapters/first-light')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send(edited)
+      .expect(400);
+    await request(base)
+      .put('/admin/chapters/first-light')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send(chapter)
+      .expect(200);
+  });
   it('creates, updates and deletes lore entries', async () => {
     const entry = {
       slug: 'test-memory',

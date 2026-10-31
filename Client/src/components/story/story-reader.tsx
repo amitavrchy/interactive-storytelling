@@ -18,7 +18,12 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { chapters, endings, type Ending } from "@/lib/story-content";
+import {
+  chapters,
+  endings,
+  type Ending,
+  type Chapter,
+} from "@/lib/story-content";
 import { useAppDispatch, useAppSelector } from "@/lib/store";
 import {
   chooseEnding,
@@ -44,8 +49,10 @@ export default function StoryReader() {
   const router = useRouter();
   const { data } = useChapters();
   const seed = chapters[story.chapterIndex];
-  const chapter = data?.find((c) => c.slug === seed.slug) || seed;
-  const ending = story.ending ? endings[story.ending] : null;
+  const chapter: Chapter = data?.find((c) => c.slug === seed.slug) || seed;
+  const ending = story.ending
+    ? chapter.endings?.[story.ending] || endings[story.ending]
+    : null;
   const scene =
     story.chapterIndex === 4 && story.ending === "rescue"
       ? "harbour"
