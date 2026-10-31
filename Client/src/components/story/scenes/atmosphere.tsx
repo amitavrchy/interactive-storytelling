@@ -2,7 +2,7 @@
 import { Component, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-type Scene = { scene: string; scrollProgress: number };
+type Scene = { scene: string; scrollProgress: number; paused?: boolean };
 class SceneBoundary extends Component<
   { children: React.ReactNode },
   { failed: boolean }
@@ -18,6 +18,7 @@ class SceneBoundary extends Component<
 function FogSea({ scene, scrollProgress }: Scene) {
   const points = useRef<THREE.Points>(null);
   const sea = useRef<THREE.Mesh>(null);
+  const elapsed = useRef(0);
   const storm = scene === "storm";
   const positions = useMemo(() => {
     const data = new Float32Array(180 * 3);
@@ -25,8 +26,9 @@ function FogSea({ scene, scrollProgress }: Scene) {
       data[i] = Math.sin(i * 127.1 + 311.7) * (i % 3 === 1 ? 5 : 12);
     return data;
   }, []);
-  useFrame(({ clock, camera }) => {
-    const t = clock.elapsedTime;
+  useFrame(({ camera }, delta) => {
+    elapsed.current += Math.min(delta, 0.05);
+    const t = elapsed.current;
     camera.position.z = 8 - scrollProgress * 0.3;
     if (points.current) {
       points.current.rotation.y = t * 0.012 + scrollProgress * 0.35;
@@ -74,14 +76,22 @@ function FogSea({ scene, scrollProgress }: Scene) {
     </>
   );
 }
-export default function Atmosphere({ scene, scrollProgress }: Scene) {
+export default function Atmosphere({
+  scene,
+  scrollProgress,
+  paused = false,
+}: Scene) {
   const [supported, setSupported] = useState(false);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
-    const test = document.createElement("canvas");
-    const gl = test.getContext("webgl2");
-    setSupported(!!gl);
-    gl?.getExtension("WEBGL_lose_context")?.loseContext();
+    try {
+      const test = document.createElement("canvas");
+      const gl = test.getContext("webgl2");
+      setSupported(!!gl);
+      gl?.getExtension("WEBGL_lose_context")?.loseContext();
+    } catch {
+      setSupported(false);
+    }
     const changed = () => setVisible(!document.hidden);
     document.addEventListener("visibilitychange", changed);
     return () => document.removeEventListener("visibilitychange", changed);
@@ -92,7 +102,7 @@ export default function Atmosphere({ scene, scrollProgress }: Scene) {
       <SceneBoundary>
         <Canvas
           dpr={[1, 1.5]}
-          frameloop={visible ? "always" : "never"}
+          frameloop={visible && !paused ? "always" : "never"}
           gl={{ alpha: true, antialias: false, powerPreference: "low-power" }}
           camera={{ position: [0, 0, 8], fov: 50 }}
         >

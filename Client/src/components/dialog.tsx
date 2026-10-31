@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useRef } from "react";
 import { X } from "lucide-react";
+import { DIALOG_CHANGE_EVENT } from "@/lib/reader-environment";
 export default function Dialog({
   open,
   onClose,
@@ -21,11 +22,13 @@ export default function Dialog({
     if (!dialog) return;
     if (open) {
       dialog.showModal();
+      window.dispatchEvent(new Event(DIALOG_CHANGE_EVENT));
       const previous = document.body.style.overflow;
       document.body.style.overflow = "hidden";
       return () => {
         document.body.style.overflow = previous;
         dialog.close();
+        window.dispatchEvent(new Event(DIALOG_CHANGE_EVENT));
       };
     }
     dialog.close();
@@ -35,7 +38,12 @@ export default function Dialog({
       ref={ref}
       className={`dialog ${wide ? "dialog-wide" : ""}`}
       aria-labelledby={titleId}
-      onCancel={onClose}
+      data-lenis-prevent
+      onCancel={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        onClose();
+      }}
       onClick={(e) => {
         if (e.target === ref.current) onClose();
       }}

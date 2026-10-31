@@ -29,6 +29,11 @@ import { useChapters } from "@/lib/api";
 import { flushVotes, recordChoice } from "@/lib/choice-queue";
 import ReaderControls from "../reader-controls";
 import Dialog from "../dialog";
+import {
+  readerIsPaused,
+  useReaderPaused,
+  useSystemReducedMotion,
+} from "@/lib/reader-environment";
 const Atmosphere = dynamic(() => import("./scenes/atmosphere"), { ssr: false });
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +60,9 @@ export default function StoryReader() {
   const smooth = useRef<Lenis | null>(null);
   const initialized = useRef(false);
   const trigger = useRef<ScrollTrigger | null>(null);
-  const reduced = story.reducedMotion;
+  const systemReducedMotion = useSystemReducedMotion();
+  const reduced = story.reducedMotion || systemReducedMotion;
+  const paused = useReaderPaused();
 
   useEffect(() => {
     if (!story.hydrated || initialized.current) return;
@@ -148,6 +155,7 @@ export default function StoryReader() {
     ScrollTrigger.addEventListener("refresh", resize);
     ScrollTrigger.refresh();
     lenis.resize();
+    if (readerIsPaused()) lenis.stop();
     return () => {
       ScrollTrigger.removeEventListener("refresh", resize);
       ctx.revert();
@@ -159,9 +167,9 @@ export default function StoryReader() {
   }, [story.hydrated, story.chapterIndex, reduced, paragraphs.length]);
 
   useEffect(() => {
-    if (choice || menu) smooth.current?.stop();
+    if (paused) smooth.current?.stop();
     else smooth.current?.start();
-  }, [choice, menu]);
+  }, [paused, reduced, story.chapterIndex, story.hydrated]);
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !document.querySelector("dialog[open]")) {
@@ -265,6 +273,7 @@ export default function StoryReader() {
               key={`${chapter.slug}-${scene}`}
               scene={scene}
               scrollProgress={progress / 100}
+              paused={paused}
             />
           )}
           <div className="chapter-meta">

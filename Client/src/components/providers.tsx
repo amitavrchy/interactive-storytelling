@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MotionConfig } from "framer-motion";
 import AuthProvider from "./auth-provider";
+import { useSystemReducedMotion } from "@/lib/reader-environment";
 import { makeStore, type AppStore, useAppSelector } from "@/lib/store";
 import {
   hydrate,
@@ -14,7 +15,9 @@ import {
 } from "@/features/story/storySlice";
 
 function Preferences({ children }: { children: React.ReactNode }) {
-  const reduced = useAppSelector((s) => s.story.reducedMotion);
+  const preference = useAppSelector((s) => s.story.reducedMotion);
+  const systemReducedMotion = useSystemReducedMotion();
+  const reduced = preference || systemReducedMotion;
   useEffect(() => {
     document.documentElement.dataset.reducedMotion = String(reduced);
   }, [reduced]);

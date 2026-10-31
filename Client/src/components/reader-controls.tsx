@@ -16,6 +16,7 @@ import {
 } from "@/features/story/storySlice";
 import { startAmbient, stopAmbient } from "@/lib/ambient";
 import Dialog from "./dialog";
+import { useSystemReducedMotion } from "@/lib/reader-environment";
 export default function ReaderControls({
   compact = false,
 }: {
@@ -23,6 +24,7 @@ export default function ReaderControls({
 }) {
   const story = useAppSelector((s) => s.story);
   const dispatch = useAppDispatch();
+  const systemReducedMotion = useSystemReducedMotion();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
   async function toggleSound() {
@@ -91,12 +93,15 @@ export default function ReaderControls({
           <span>
             <strong>Reduced motion</strong>
             <small>
-              A calm, page-by-page story. No 3D or scrolling effects.
+              {systemReducedMotion
+                ? "Enabled by your device's motion preference."
+                : "A calm, page-by-page story. No 3D or scrolling effects."}
             </small>
           </span>
           <input
             type="checkbox"
-            checked={story.reducedMotion}
+            checked={story.reducedMotion || systemReducedMotion}
+            disabled={systemReducedMotion}
             onChange={(e) => dispatch(setReducedMotion(e.target.checked))}
           />
           <span className="toggle" aria-hidden="true">
