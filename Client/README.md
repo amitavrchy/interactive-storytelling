@@ -49,7 +49,7 @@ npm run test:e2e
 
 The suite builds both applications, serves the standalone production frontend, and starts an isolated test API on ports 5100/5101. Stop a local preview on those ports first. Tests use `.next-e2e/` and disposable API data; developer journeys and the normal `.next/` build are preserved.
 
-Coverage includes the complete story and both endings, persistence, keyboard controls, archive, accounts/cloud sync, admin publishing, API failure, actual rendered font sizes on every page, and 360px mobile layouts. Failures retain traces in `test-results/`.
+Coverage includes the complete story and both endings, deep-link resume, scrollable dialogs, live motion preferences, WebGL failure, archive, recoverable account sessions/cloud sync, CMS ending publication, unpublished drafts, choice delivery with unavailable storage, actual rendered font sizes (including a 12px browser default) and 360px layouts. Failures retain traces in `test-results/`.
 
 ## Source layout
 

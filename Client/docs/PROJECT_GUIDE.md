@@ -6,15 +6,15 @@ A cinematic story about memory, belonging and finding a way home. Six chapters, 
 
 Scroll or use **Continue** to advance. The timeline moves text, atmosphere and the camera together. Only the active chapter's WebGL scene is mounted; pixel ratio is capped at 1.5. Sound is off until explicitly enabled and pauses when the tab is hidden.
 
-**Reduced motion** provides readable stacked chapters without WebGL or pinned scrolling. The reader honours the system preference on first visit. Atmosphere captions default to on; narrative text is always available. UI labels, controls, captions, footnotes and form fields never use a font below 14px, including mobile overrides.
+**Reduced motion** provides readable stacked chapters without WebGL or pinned scrolling. Device preference changes take effect immediately; they are kept separate from the reader's manually saved preference. Dialogs and hidden tabs pause the cinematic timeline and GPU scene. Atmosphere captions default to on; narrative text is always available. UI labels, controls, captions, footnotes and form fields never use a font below 14px, including smaller browser defaults.
 
-Escape opens the chapter menu. Dialogs trap focus; Escape dismisses them. Tab navigates controls and Enter/Space chooses an ending. Progress saves on the device, and damaged saves are discarded safely. API failure falls back to the original local edition.
+Escape opens the chapter menu. Dialogs trap focus, remain scrollable and dismiss with Escape. Tab navigates controls and Enter/Space chooses an ending. Chapter URLs stay synchronized with saved progress, including library links and refreshes. Damaged saves are discarded safely. API failure falls back to the original local edition. Choice submissions recover from a damaged outbox; blocked storage falls back to an in-memory queue for the current tab.
 
 ## Accounts and studio
 
-Accounts use 12-hour JWT sessions. Cloud sync is explicit: **Save to cloud** replaces account progress; **Restore from cloud** replaces device progress after confirmation. Device data is never silently replaced when signing in.
+Accounts use 12-hour JWT sessions. Temporary connection failures preserve a saved session and offer reconnection; confirmed expiration clears private cached data and returns to sign-in. Cloud sync is explicit: **Save to cloud** replaces account progress; **Restore from cloud** replaces device progress after confirmation. Device data is never silently replaced when signing in.
 
-An administrator can edit chapter JSON, create/edit/delete archive entries and inspect real branch totals. Validation runs in the browser and API. The six core chapters remain published and cannot be deleted. Supplementary chapter CRUD exists in the API; changing the six-part journey requires changing the narrative model.
+An administrator can edit chapter JSON, including both ending variants under First Light, create/edit/delete archive entries and inspect real branch totals. Validation runs in the browser and API. Unpublished changes require explicit discard before changing entries, sections or following another page link. The six core chapters remain published and cannot be deleted. Supplementary chapter CRUD exists in the API; changing the six-part journey requires changing the narrative model.
 
 Set an unused `ADMIN_EMAIL` and strong `ADMIN_PASSWORD` in the backend environment to provision an administrator on startup. There is no default administrator password. Remove the provisioning password after creation; startup does not overwrite an existing account's credentials.
 

@@ -212,9 +212,11 @@ model ChoiceStat {
 
 ## 10. Acceptance
 
-- [ ] Completing story yields Ending A or B based on choice
-- [ ] Refresh restores progress from localStorage
-- [ ] Reduced-motion path completes story without WebGL
-- [ ] Sound never autoplays without gesture
-- [ ] Choice stats increment
-- [ ] Progress rail reflects chapter
+- [x] Completing story yields Ending A or B based on choice
+- [x] Refresh restores progress from localStorage, including chapter-library deep links
+- [x] Reduced-motion path completes story without WebGL and reacts to live device preference changes
+- [x] Sound never autoplays without gesture
+- [x] Choice stats increment, with idempotent retries and a storage-independent in-memory fallback
+- [x] Progress rail reflects chapter and dialogs pause the cinematic timeline
+- [x] Rendered interface text stays at least 14px, including a 12px browser default
+- [x] CMS publishes both ending variants and protects unpublished drafts
