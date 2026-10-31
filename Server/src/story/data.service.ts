@@ -262,15 +262,15 @@ export class DataService implements OnModuleInit {
     const allowedFlags = seed.chapters
       .slice(0, furthestChapter + 1)
       .map((c) => c.unlockFlag);
+    const completed =
+      !!progress.ending && furthestChapter === 5 && progress.completed;
     const normalized = {
       ...progress,
       furthestChapter,
       chapterIndex: Math.min(progress.chapterIndex, furthestChapter),
-      completed: !!progress.ending && progress.completed,
-      flags: progress.flags.filter(
-        (f) =>
-          allowedFlags.includes(f) &&
-          (f !== 'complete' || (!!progress.ending && progress.completed)),
+      completed,
+      flags: [...new Set(progress.flags)].filter(
+        (f) => allowedFlags.includes(f) && (f !== 'complete' || completed),
       ),
     };
     const saved = { ...normalized, updatedAt: new Date().toISOString() };

@@ -37,6 +37,7 @@ export function normalizeProgress(saved: SavedProgress): SavedProgress {
   const ceiling = saved.ending ? 5 : 3;
   const furthestChapter = Math.min(saved.furthestChapter, ceiling);
   const chapterIndex = Math.min(saved.chapterIndex, furthestChapter);
+  const completed = !!saved.ending && furthestChapter === 5 && saved.completed;
   const allowed = chapters
     .slice(0, furthestChapter + 1)
     .map((c) => c.unlockFlag);
@@ -44,11 +45,9 @@ export function normalizeProgress(saved: SavedProgress): SavedProgress {
     ...saved,
     chapterIndex,
     furthestChapter,
-    completed: !!saved.ending && saved.completed,
-    flags: saved.flags.filter(
-      (flag) =>
-        allowed.includes(flag) &&
-        (flag !== "complete" || (!!saved.ending && saved.completed)),
+    completed,
+    flags: [...new Set(saved.flags)].filter(
+      (flag) => allowed.includes(flag) && (flag !== "complete" || completed),
     ),
   };
 }

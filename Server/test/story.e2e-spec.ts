@@ -182,6 +182,26 @@ describe('Real compiled API integration', () => {
       .send(progress)
       .expect(200);
   });
+  it('requires the epilogue for completion and removes repeated unlock flags', async () => {
+    const response = await request(base)
+      .put('/progress')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        ...progress,
+        completed: true,
+        flags: ['shore', 'shore', 'dawn', 'complete'],
+      })
+      .expect(200);
+    expect(response.body).toMatchObject({
+      completed: false,
+      flags: ['shore', 'dawn'],
+    });
+    await request(base)
+      .put('/progress')
+      .set('Authorization', `Bearer ${token}`)
+      .send(progress)
+      .expect(200);
+  });
   it('counts choices once per request and rejects conflicting retries', async () => {
     const requestId = randomUUID();
     await request(base)

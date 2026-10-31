@@ -63,12 +63,17 @@ export default function StoryReader() {
     const requested = chapters.findIndex(
       (c) => c.slug === search.get("chapter"),
     );
-    dispatch(
-      visitChapter(
-        requested >= 0 && requested <= story.furthestChapter
-          ? requested
-          : story.chapterIndex,
-      ),
+    const index =
+      requested >= 0 && requested <= story.furthestChapter
+        ? requested
+        : story.chapterIndex;
+    dispatch(visitChapter(index));
+    const url = new URL(window.location.href);
+    url.searchParams.set("chapter", chapters[index].slug);
+    window.history.replaceState(
+      null,
+      "",
+      `${url.pathname}${url.search}${url.hash}`,
     );
   }, [
     dispatch,
@@ -173,6 +178,13 @@ export default function StoryReader() {
       setProgress(0);
       dispatch(visitChapter(index));
       setMenu(false);
+      const url = new URL(window.location.href);
+      url.searchParams.set("chapter", chapters[index].slug);
+      window.history.replaceState(
+        null,
+        "",
+        `${url.pathname}${url.search}${url.hash}`,
+      );
     },
     [dispatch],
   );
