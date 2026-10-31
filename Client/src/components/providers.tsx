@@ -42,17 +42,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       } catch {
         /* Discard a damaged save without treating storage as unavailable. */
       }
-      store.dispatch(
-        hydrate(
-          parsed?.success
-            ? parsed.data
-            : {
-                ...initialProgress,
-                reducedMotion: matchMedia("(prefers-reduced-motion: reduce)")
-                  .matches,
-              },
-        ),
-      );
+      store.dispatch(hydrate(parsed?.success ? parsed.data : initialProgress));
     } catch {
       store.dispatch(hydrate(initialProgress));
       store.dispatch(storageUnavailable());

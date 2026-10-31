@@ -34,8 +34,10 @@ test("preferences freeze the story while their own content remains scrollable", 
 test("changing the device motion preference immediately switches to a readable, canvas-free story", async ({
   page,
 }) => {
-  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/story");
+  await expect(page.locator(".reading-mode")).toBeVisible();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await expect(page.locator(".cinematic-mode")).toBeVisible();
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(page.locator(".reading-mode")).toBeVisible();
