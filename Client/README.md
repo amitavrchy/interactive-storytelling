@@ -61,8 +61,8 @@ All application files live under `Client/` and `Server/`. Repository Git configu
 - `src/content/story.json`: committed local content seed.
 - `public/images/`: five generated cinematic environments.
 - `scripts/`: local development, browser tests and standalone packaging.
-- `docs/`: project specification, artwork provenance, implementation and verification notes.
+- `docs/`: artwork provenance, implementation and verification notes.
 
 The canonical seed is `Server/content/story.json`. Run `npm run content:sync` from either application after editing it. Each application builds independently from its committed seed. CMS edits override the seed without being overwritten on server startup.
 
-[Project guide](docs/PROJECT_GUIDE.md) · [Specification](docs/PROJECT_SPEC.md) · [Artwork and prompts](docs/ARTWORK.md) · [Verification](docs/VERIFICATION.md)
+[Project guide](docs/PROJECT_GUIDE.md) · [Artwork and prompts](docs/ARTWORK.md) · [Verification](docs/VERIFICATION.md)
