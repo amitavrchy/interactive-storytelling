@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node init && next dev",
-    "build": "node init && next build && node scripts/prepare-standalone.mjs",
-    "start": "node init && next start",
+    "dev": "next dev",
+    "build": "next build && node scripts/prepare-standalone.mjs",
+    "start": "next start",
     "lint": "eslint",
     "test:e2e": "node scripts/browser-tests.mjs",
-    "dev:all": "node init && node scripts/dev-project.mjs",
-    "dev:all:local": "node init && node scripts/dev-project.mjs --local",
+    "dev:all": "node scripts/dev-project.mjs",
+    "dev:all:local": "node scripts/dev-project.mjs --local",
     "content:sync": "node ../Server/scripts/sync-content.mjs",
     "browser:install": "playwright install chromium",
-    "start:standalone": "node init && node .next/standalone/server.js"
+    "start:standalone": "node .next/standalone/server.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
